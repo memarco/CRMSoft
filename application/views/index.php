@@ -85,6 +85,7 @@ require_once(APPPATH . "views/templates/header.php");
                                       <th>Client</th>
 
                                       <th>Status</th>
+                                      <th class="text-center">Montant cotation (€)</th>
                                       <th class="text-center">Dépenses (€)</th>
                                       <th class="text-center">Paiements (€)</th>
                                       <th class="text-center">Marges (€)</th>
@@ -98,6 +99,7 @@ require_once(APPPATH . "views/templates/header.php");
 
                                   <td><span class="label label-danger">&nbsp;&nbsp;En cours&nbsp;</span></td>
                                   <td class="text-center">11500</td>
+                                  <td class="text-center">11500</td>
                                   <td class="text-center">10000</td>
                                   <td class="text-center"><p class="label-danger" style="color:white">- 1 500</p></td>
                               </tr>
@@ -109,6 +111,7 @@ require_once(APPPATH . "views/templates/header.php");
                                   <td><span class="label label-success">&nbsp;&nbsp;Terminé &nbsp;</span></td>
                                   <td class="text-center">15000</td>
                                   <td class="text-center">15000</td>
+                                  <td class="text-center">11500</td>
                                   <td class="text-center"><p class="bg-primary" style="color:white"> 0 </p></td>
                               </tr>
                               <tr>
@@ -117,6 +120,7 @@ require_once(APPPATH . "views/templates/header.php");
                                   <td>John</td>
 
                                   <td><span class="label label-warning">En attente</span></td>
+                                  <td class="text-center">1500</td>
                                   <td class="text-center">1500</td>
                                   <td class="text-center">5000</td>
                                   <td class="text-center"><p class="label-success" style="color:white">3 500</p></td>
@@ -128,6 +132,7 @@ require_once(APPPATH . "views/templates/header.php");
 
                                   <td><span class="label label-info">&nbsp;En cours&nbsp;&nbsp;</span></td>
                                   <td class="text-center">1500</td>
+                                  <td class="text-center">1500</td>
                                   <td class="text-center">1000</td>
                                   <td class="text-center"><p class="label-success" style="color:white">3 500</p></td>
                               </tr>
@@ -138,6 +143,7 @@ require_once(APPPATH . "views/templates/header.php");
 
                                   <td><span class="label label-warning">En attente</span></td>
                                   <td class="text-center">1500</td>
+                                  <td class="text-center">1500</td>
                                   <td class="text-center">1000</td>
                                   <td class="text-center"><p class="label-success" style="color:white">3 500</p></td>
                               </tr>
@@ -146,6 +152,7 @@ require_once(APPPATH . "views/templates/header.php");
                                   <td><span style="font-weight: bold;">FORD Focus</span></td>
                                   <td>Mickey</td>
                                   <td><span class="label label-info">&nbsp;En cours&nbsp;&nbsp;</span></td>
+                                  <td class="text-center">1500</td>
                                   <td class="text-center">1500</td>
                                   <td class="text-center">1000</td>
                                   <td class="text-center"><p class="label-success" style="color:white">3 500</p></td>
