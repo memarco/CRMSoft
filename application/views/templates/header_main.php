@@ -1,18 +1,18 @@
+
+<body>
+<div class="page-container">
+   <div class="left-content">
+	   <div class="mother-grid-inner">
+            <!--header start here-->
 <!--header start here-->
 <div class="header-main">
 <div class="header-left">
   <div class="logo-name">
-       <a href="index.html"> <h1>CRM</h1>
+       <a href="<?php echo base_url() ?>"> <h1>CRM</h1>
       <!--<img id="logo" src="" alt="Logo"/>-->
       </a>
   </div>
-  <!--search-box-->
-    <div class="search-box">
-      <form>
-        <input type="text" placeholder="Search..." required="">
-        <input type="submit" value="">
-      </form>
-    </div><!--//end-search-box-->
+ 
   <div class="clearfix"> </div>
  </div>
  <div class="header-right">
@@ -179,3 +179,19 @@
  <div class="clearfix"> </div>
 </div>
 <!--heder end here-->
+<!-- script-for sticky-nav -->
+		<script>
+		$(document).ready(function() {
+			 var navoffeset=$(".header-main").offset().top;
+			 $(window).scroll(function(){
+				var scrollpos=$(window).scrollTop();
+				if(scrollpos >=navoffeset){
+					$(".header-main").addClass("fixed");
+				}else{
+					$(".header-main").removeClass("fixed");
+				}
+			 });
+
+		});
+		</script>
+		<!-- /script-for sticky-nav -->

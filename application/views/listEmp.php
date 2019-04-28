@@ -33,13 +33,13 @@
     <ul class="navbar-nav">
       <li class="nav-item">
         <a href="http://www.webdamn.com" class="nav-link">Home</a>
-      </li>      
+      </li>
     </ul>
-  </div>  
-</nav> 
-<div class="container">	
-    <div class="row">		
-        <div class="col-12">		
+  </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
             <div class="col-md-12">
 				<br>
 				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -56,7 +56,7 @@
                 <h1>Example: Ajax CRUD Operations in CodeIgniter<br>
                     <div class="float-right"><a href="javascript:void(0);" class="btn btn-primary" data-toggle="modal" data-target="#addEmpModal"><span class="fa fa-plus"></span> Add New</a></div><br>
                 </h1>
-            </div>            
+            </div>
             <table class="table table-striped" id="employeeListing">
                 <thead>
                     <tr>
@@ -68,13 +68,13 @@
                         <th style="text-align: right;">Actions</th>
                     </tr>
                 </thead>
-                <tbody id="listRecords">                    
+                <tbody id="listRecords">
                 </tbody>
             </table>
         </div>
     </div>
-        
-</div>	
+
+</div>
 <form id="saveEmpForm" method="post">
 	<div class="modal fade" id="addEmpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	  <div class="modal-dialog modal-lg" role="document">
@@ -85,7 +85,7 @@
 			  <span aria-hidden="true">&times;</span>
 			</button>
 		  </div>
-		  <div class="modal-body">                       
+		  <div class="modal-body">
 				<div class="form-group row">
 					<label class="col-md-2 col-form-label">Name*</label>
 					<div class="col-md-10">
@@ -95,7 +95,7 @@
 				<div class="form-group row">
 					<label class="col-md-2 col-form-label">Age*</label>
 					<div class="col-md-10">
-					  <input type="text" name="age" id="age" class="form-control" required> 
+					  <input type="text" name="age" id="age" class="form-control" required>
 					</div>
 				</div>
 				<div class="form-group row">
@@ -119,7 +119,7 @@
 		  </div>
 		  <div class="modal-footer">
 			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-			<button type="submit" class="btn btn-primary">Save</button>
+			<button type="button" class="btn btn-primary" id="btnSaveClient">Save</button>
 		  </div>
 		</div>
 	  </div>
@@ -147,7 +147,7 @@
 					<div class="col-md-10">
 					  <input type="text" name="empAge" id="empAge" class="form-control" placeholder="Age" required>
 					</div>
-				</div>				
+				</div>
 				<div class="form-group row">
 					<label class="col-md-2 col-form-label">Skills*</label>
 					<div class="col-md-10">

@@ -2,30 +2,9 @@
 <?php
 require_once(APPPATH . "views/templates/header.php");
 ?>
-<body>
-<div class="page-container">
-   <div class="left-content">
-	   <div class="mother-grid-inner">
-            <!--header start here-->
-
-              <?php include(APPPATH . "views/templates/header_main.php"); ?>
+<?php include(APPPATH . "views/templates/header_main.php"); ?>
 <!--heder end here-->
-<!-- script-for sticky-nav -->
-		<script>
-		$(document).ready(function() {
-			 var navoffeset=$(".header-main").offset().top;
-			 $(window).scroll(function(){
-				var scrollpos=$(window).scrollTop();
-				if(scrollpos >=navoffeset){
-					$(".header-main").addClass("fixed");
-				}else{
-					$(".header-main").removeClass("fixed");
-				}
-			 });
 
-		});
-		</script>
-		<!-- /script-for sticky-nav -->
 <!--inner block start here-->
 <div class="inner-block">
 <!--market updates updates-->
@@ -204,42 +183,4 @@ require_once(APPPATH . "views/templates/header.php");
 <!--climate end here-->
 </div>
 <!--inner block end here-->
-<!--copy rights start here-->
-<div class="copyrights">
-	 <p>© 2019 CRM. All Rights Reserved | Design by  <a href="http://#/" target="_blank">TeamInOngola</a> </p>
-</div>
-<!--COPY rights end here-->
-</div>
-</div>
-<!--slider menu-->
-  <?php include(APPPATH . "views/templates/menu_left.php"); ?>
-	<div class="clearfix"> </div>
-</div>
-<!--slide bar menu end here-->
-<script>
-var toggle = true;
-
-$(".sidebar-icon").click(function() {
-  if (toggle)
-  {
-    $(".page-container").addClass("sidebar-collapsed").removeClass("sidebar-collapsed-back");
-    $("#menu span").css({"position":"absolute"});
-  }
-  else
-  {
-    $(".page-container").removeClass("sidebar-collapsed").addClass("sidebar-collapsed-back");
-    setTimeout(function() {
-      $("#menu span").css({"position":"relative"});
-    }, 400);
-  }
-                toggle = !toggle;
-            });
-</script>
-<!--scrolling js-->
-		<script src="<?php echo base_url('vendor/js/jquery.nicescroll.js') ?>"></script>
-		<script src="<?php echo base_url('vendor/js/scripts.js') ?>"></script>
-		<!--//scrolling js-->
-<script src="<?php echo base_url('vendor/js/bootstrap.js') ?>"> </script>
-<!-- mother grid end here-->
-</body>
-</html>
+<?php include(APPPATH . "views/templates/footer.php"); ?>
