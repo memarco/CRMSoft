@@ -42,9 +42,9 @@ class Categorie extends CI_Controller {
 		echo json_encode($output);
 	}
 
-	public function ajax_edit($Id_categorie)
+	public function ajax_edit($id)
 	{
-		$data = $this->categorie->get_by_id($Id_categorie);
+		$data = $this->categorie->get_by_id($id);
 		echo json_encode($data);
 	}
 
@@ -63,13 +63,13 @@ class Categorie extends CI_Controller {
 		$data = array(
 				'libelle_categorie' => $this->input->post('libelle_categorie')
 			);
-		$this->categorie->update(array('Id_categorie' => $this->input->post('Id_categorie')), $data);
+		$this->categorie->update(array('id' => $this->input->post('id')), $data);
 		echo json_encode(array("status" => TRUE));
 	}
 
-	public function ajax_delete($Id_categorie)
+	public function ajax_delete($id)
 	{
-		$this->categorie->delete_by_id($Id_categorie);
+		$this->categorie->delete_by_id($id);
 		echo json_encode(array("status" => TRUE));
 	}
 
