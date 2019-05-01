@@ -4,7 +4,7 @@ require_once(APPPATH . "views/templates/header.php");
 ?>
 <?php include(APPPATH . "views/templates/header_main.php"); ?>
 <!--heder end here-->
-<script src="<?php echo base_url('vendor/js/crud_operation_clients.js') ?>"></script>
+<script src="<?php echo base_url('vendor/js/crud_operation_type_depenses.js') ?>"></script>
 <!--inner block start here-->
 
   <div class="chit-chat-layer1">
@@ -17,16 +17,12 @@ require_once(APPPATH . "views/templates/header.php");
                                     </button>
                               </div>
                               <div class="table-responsive">
-                                  <table class="table table-hover" id="clientTable">
+                                  <table class="table table-hover" id="type_depenseTable">
                                     <thead>
                                       <tr>
                                         <th>#</th>
-                                        <th>Nom(s)</th>
-                                        <th>Prénom(s)</th>
-                                        <th>Adresse</th>
-                                        <th class="text-center">Mail</th>
-                                        <th class="text-center">Tél</th>
-                                        <th class="text-center">Autre infos</th>
+                                        <th>Type Depense(s)</th>
+                                         
                                         <th class="text-center">Actions</th>
                                     </tr>
                                 </thead>
@@ -42,7 +38,7 @@ require_once(APPPATH . "views/templates/header.php");
 
 <!-- Modal pour le formulaire -->
 
-<?php include(APPPATH . "views/clients/form.html"); ?>
+<?php include(APPPATH . "views/type_depenses/form.html"); ?>
 
 <!--inner block end here-->
 <?php include(APPPATH . "views/templates/footer.php"); ?>

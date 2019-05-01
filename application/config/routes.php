@@ -59,3 +59,25 @@ $route['clients'] = 'clients';
 $route['clients/create'] = 'clients/create';
 $route['clients/index'] = 'clients/index';
 $route['clients/index/(:any)'] = 'clients/index/$1';
+
+
+/* client routes  */
+$route['categories'] = 'categories';
+$route['categories/create'] = 'categories/create';
+$route['categories/index'] = 'categories/index';
+$route['categories/index/(:any)'] = 'categories/index/$1';
+
+
+
+/* type_depenses routes  */
+$route['type_depenses'] = 'type_depenses';
+$route['type_depenses/create'] = 'type_depenses/create';
+$route['type_depenses/index'] = 'type_depenses/index';
+$route['type_depenses/index/(:any)'] = 'type_depenses/index/$1';
+
+
+/* client routes  */
+$route['persons'] = 'persons';
+$route['peson/index'] = 'person/index';
+
+$route['person/index/(:any)'] = 'person/index/$1';

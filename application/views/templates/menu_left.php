@@ -1,4 +1,4 @@
-<div class="sidebar-menu"  style="position:fixed">
+ <div class="sidebar-menu"  style="position:fixed">
     <div class="logo"> <a href="#" class="sidebar-icon"> <span class="fa fa-bars"></span> </a> <a href="#"> <span id="logo" ></span>
         <!--<img id="logo" src="" alt="Logo"/>-->
     </a> </div>
@@ -17,10 +17,11 @@
         </li>
          <li><a href="#"><i class="fa fa-cog"></i><span>Paramètres</span><span class="fa fa-angle-right" style="float: right"></span></a>
            <ul id="menu-academico-sub" >
-              <li id="menu-academico-avaliacoes" ><a href="<?php echo base_url(); ?>index.php/clients">Clients</a></li>
-                 <li id="menu-academico-avaliacoes" ><a href="404.html">Catégories</a></li>
+              <li id="menu-academico-avaliacoes" ><a href="<?php echo base_url(); ?>index.php/person">Persons</a></li>
+               <li id="menu-academico-avaliacoes" ><a href="<?php echo base_url(); ?>index.php/clients">Clients</a></li>
+                 <li id="menu-academico-avaliacoes" ><a href="<?php echo base_url(); ?>index.php/categories">Catégories</a></li>
               <li id="menu-academico-boletim" ><a href="blank.html">Types de paiements</a></li>
-              <li id="menu-academico-boletim" ><a href="blank.html">Types de dépenses</a></li>
+              <li id="menu-academico-boletim" ><a href="<?php echo base_url(); ?>index.php/type_depenses">Types de dépenses</a></li>
              </ul>
          </li>
          <!-- <li><a href="#"><i class="fa fa-shopping-cart"></i><span>E-Commerce</span><span class="fa fa-angle-right" style="float: right"></span></a>
