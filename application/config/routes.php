@@ -62,10 +62,10 @@ $route['clients/index/(:any)'] = 'clients/index/$1';
 
 
 /* client routes  */
-$route['categories'] = 'categories';
-$route['categories/create'] = 'categories/create';
-$route['categories/index'] = 'categories/index';
-$route['categories/index/(:any)'] = 'categories/index/$1';
+$route['categorie'] = 'categorie';
+$route['categorie/create'] = 'categorie/create';
+$route['categorie/index'] = 'categorie/index';
+$route['categorie/index/(:any)'] = 'categorie/index/$1';
 
 
 

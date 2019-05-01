@@ -12,7 +12,7 @@ class Client extends CI_Controller {
 	public function index()
 	{
 		$this->load->helper('url');
-		$this->load->view('client_view');
+		$this->load->view('client/client_view');
 	}
 
 	public function ajax_list()
@@ -31,9 +31,10 @@ class Client extends CI_Controller {
 			$row[] = $client->autre_info_client;
 
 			//add html for action
-			$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_client('."'".$client->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
-				  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_client('."'".$client->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
-		
+			$row[] = '<a href="javascript:void(0);" class="btn btn-info btn-sm editRecord"   title="Edit" onclick="edit_client('."'".$client->id."'".')">  Edit</a>
+				 <a href="javascript:void(0);" class="btn btn-danger btn-sm deleteRecord"   title="Hapus" onclick="delete_client('."'".$client->id."'".')">  Delete</a>';
+
+
 			$data[] = $row;
 		}
 
@@ -60,7 +61,7 @@ class Client extends CI_Controller {
 				'prenom_client' => $this->input->post('prenom_client'),
 				'email_client' => $this->input->post('email_client'),
                                 'tel_client' => $this->input->post('tel_client'),
-//				'adresse_client' => $this->input->post('addresse_client'),
+				'addresse_client' => $this->input->post('addresse_client'),
 				'autre_info_client' => $this->input->post('autre_info_client')
 			);
 		$insert = $this->client->save($data);
@@ -74,7 +75,7 @@ class Client extends CI_Controller {
 				'prenom_client' => $this->input->post('prenom_client'),
 				'email_client' => $this->input->post('email_client'),
                                  'tel_client' => $this->input->post('tel_client'),
-//				'adresse_client' => $this->input->post('addresse_client'),
+			'addresse_client' => $this->input->post('addresse_client'),
 				'autre_info_client' => $this->input->post('autre_info_client')
 			);
 		$this->client->update(array('id' => $this->input->post('id')), $data);

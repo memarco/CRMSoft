@@ -12,7 +12,7 @@ class Categorie extends CI_Controller {
 	public function index()
 	{
 		$this->load->helper('url');
-		$this->load->view('categorie_view');
+		$this->load->view('categorie/categorie_view');
 	}
 
 	public function ajax_list()
@@ -23,12 +23,12 @@ class Categorie extends CI_Controller {
 		foreach ($list as $categorie) {
 			$no++;
 			$row = array();
-			$row[] = $categorie->libelle_categories;
-		
+			$row[] = $categorie->libelle_categorie;
+
 			//add html for action
-			$row[] = '<a class="btn btn-sm btn-primary" href="javascript:void(0)" title="Edit" onclick="edit_categorie('."'".$categorie->id."'".')"><i class="glyphicon glyphicon-pencil"></i> Edit</a>
-				  <a class="btn btn-sm btn-danger" href="javascript:void(0)" title="Hapus" onclick="delete_categorie('."'".$categorie->id."'".')"><i class="glyphicon glyphicon-trash"></i> Delete</a>';
-		
+			$row[] = '<a href="javascript:void(0);" class="btn btn-info btn-sm editRecord"   title="Edit" onclick="edit_categorie('."'".$categorie->id."'".')">  Edit</a>
+				  <a class="btn btn-sm btn-danger deleteRecord" href="javascript:void(0)" title="Hapus" onclick="delete_categorie('."'".$categorie->id."'".')"> Delete</a>';
+
 			$data[] = $row;
 		}
 
@@ -52,7 +52,7 @@ class Categorie extends CI_Controller {
 	{
 		$data = array(
 				'libelle_categorie' => $this->input->post('libelle_categorie')
-				
+
 			);
 		$insert = $this->categorie->save($data);
 		echo json_encode(array("status" => TRUE));

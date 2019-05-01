@@ -17,9 +17,8 @@
         </li>
          <li><a href="#"><i class="fa fa-cog"></i><span>Paramètres</span><span class="fa fa-angle-right" style="float: right"></span></a>
            <ul id="menu-academico-sub" >
-              <li id="menu-academico-avaliacoes" ><a href="<?php echo base_url(); ?>index.php/person">Persons</a></li>
-               <li id="menu-academico-avaliacoes" ><a href="<?php echo base_url(); ?>index.php/clients">Clients</a></li>
-                 <li id="menu-academico-avaliacoes" ><a href="<?php echo base_url(); ?>index.php/categories">Catégories</a></li>
+               <li id="menu-academico-avaliacoes" ><a href="<?php echo base_url(); ?>index.php/client">Clients</a></li>
+                 <li id="menu-academico-avaliacoes" ><a href="<?php echo base_url(); ?>index.php/categorie">Catégories</a></li>
               <li id="menu-academico-boletim" ><a href="blank.html">Types de paiements</a></li>
               <li id="menu-academico-boletim" ><a href="<?php echo base_url(); ?>index.php/type_depenses">Types de dépenses</a></li>
              </ul>

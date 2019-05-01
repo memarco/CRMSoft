@@ -1,36 +1,23 @@
+<!-- /#Header -->
 <?php
 require_once(APPPATH . "views/templates/header.php");
 ?>
-<?php include(APPPATH . "views/templates/header_main.php"); ?> 
+<?php include(APPPATH . "views/templates/header_main.php"); ?>
+<!--heder end here-->
+<!--inner block start here-->
 
-<!DOCTYPE html>
-<html>
-    <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ajax CRUD with Bootstrap modals and Datatables</title>
-    <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css')?>" rel="stylesheet">
-    <link href="<?php echo base_url('assets/datatables/css/dataTables.bootstrap.css')?>" rel="stylesheet">
-    <link href="<?php echo base_url('assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')?>" rel="stylesheet">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    </head>
-<body>
-    <div class="container">
-        <h1 style="font-size:20pt">Liste de Clients</h1>
+  <div class="chit-chat-layer1">
+    <div class="col-md-12 chit-chat-layer1-left">
+                 <div class="work-progres">
+                              <div class="chit-chat-heading">
+Liste des clients &nbsp;
 
-        <h3>Client</h3>
         <br />
         <button class="btn btn-success" onclick="add_client()"><i class="glyphicon glyphicon-plus"></i> Add Client</button>
         <button class="btn btn-default" onclick="reload_table()"><i class="glyphicon glyphicon-refresh"></i> Reload</button>
         <br />
         <br />
-
+</div>
         <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
@@ -230,46 +217,46 @@ function delete_client(id)
                         <div class="form-group">
                             <label class="control-label col-md-3">Nom </label>
                             <div class="col-md-9">
-                                <input name="nom_client" placeholder="nom_client" class="form-control" type="text">
+                                <input name="nom_client"  class="form-control" type="text">
                                 <span class="help-block"></span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3">Prenom</label>
                             <div class="col-md-9">
-                                <input name="prenom_client" placeholder="prenom_client" class="form-control" type="text">
+                                <input name="prenom_client"  class="form-control" type="text">
                                 <span class="help-block"></span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3">Email</label>
                             <div class="col-md-9">
-                                <input name="email_client" placeholder="email_client" class="" type="text">
+                                <input name="email_client" class="form-control" type="text">
                                 <span class="help-block"></span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3">Tel</label>
                             <div class="col-md-9">
-                                <input name="tel_client" placeholder="tel_client" class="" type="text">
+                                <input name="tel_client"    class="form-control" type="text">
                                 <span class="help-block"></span>
                             </div>
                         </div>
-<!--                        <div class="form-group">
+                      <div class="form-group">
                             <label class="control-label col-md-3">Adresse</label>
                             <div class="col-md-9">
-                                <input name="adresse_client" placeholder="adresse_client" class="" type="text">
+                                <input name="addresse_client"    class="form-control" type="text">
                                 <span class="help-block"></span>
                             </div>
-                        </div>-->
+                        </div>
                         <div class="form-group">
                             <label class="control-label col-md-3">Autre info</label>
                             <div class="col-md-9">
-                                <input name="autre_info_client" placeholder="autre_info_client" class="" type="text">
+                                <input name="autre_info_client"    class="form-control" type="text">
                                 <span class="help-block"></span>
                             </div>
                         </div>
-                        
+
                     </div>
                 </form>
             </div>
@@ -281,7 +268,9 @@ function delete_client(id)
     </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!-- End Bootstrap modal -->
-</body>
-</html>
- 
+
+<!-- Modal pour le formulaire -->
+
+
+<!--inner block end here-->
 <?php include(APPPATH . "views/templates/footer.php"); ?>

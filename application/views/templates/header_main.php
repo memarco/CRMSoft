@@ -12,7 +12,7 @@
       <!--<img id="logo" src="" alt="Logo"/>-->
       </a>
   </div>
- 
+
   <div class="clearfix"> </div>
  </div>
  <div class="header-right">
@@ -179,7 +179,7 @@
  <div class="clearfix"> </div>
 </div>
 <!--heder end here-->
-<!-- script-for sticky-nav -->
+<!-- script-for sticky-nav
 		<script>
 		$(document).ready(function() {
 			 var navoffeset=$(".header-main").offset().top;
@@ -192,6 +192,6 @@
 				}
 			 });
 
-		});
+		});-->
 		</script>
 		<!-- /script-for sticky-nav -->

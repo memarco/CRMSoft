@@ -1,44 +1,29 @@
+<!-- /#Header -->
 <?php
 require_once(APPPATH . "views/templates/header.php");
 ?>
 <?php include(APPPATH . "views/templates/header_main.php"); ?>
+<!--heder end here-->
+<!--inner block start here-->
 
+  <div class="chit-chat-layer1">
+    <div class="col-md-12 chit-chat-layer1-left">
+                 <div class="work-progres">
+                              <div class="chit-chat-heading">
+Catégories &nbsp;
 
-
-<!DOCTYPE html>
-<html>
-    <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ajax CRUD with Bootstrap modals and Datatables</title>
-    <link href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css')?>" rel="stylesheet">
-    <link href="<?php echo base_url('assets/datatables/css/dataTables.bootstrap.css')?>" rel="stylesheet">
-    <link href="<?php echo base_url('assets/bootstrap-datepicker/css/bootstrap-datepicker3.min.css')?>" rel="stylesheet">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    </head>
-<body>
-    <div class="container">
-        <h1 style="font-size:20pt">Ajax CRUD with Bootstrap modals and Datatables</h1>
-
-        <h3>Person Data</h3>
         <br />
-        <button class="btn btn-success" onclick="add_person()"><i class="glyphicon glyphicon-plus"></i> Add Person</button>
+        <button class="btn btn-success" onclick="add_client()"><i class="glyphicon glyphicon-plus"></i> Ajouter</button>
         <button class="btn btn-default" onclick="reload_table()"><i class="glyphicon glyphicon-refresh"></i> Reload</button>
         <br />
         <br />
-
+</div>
         <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
-                    <th>Libelle Cat</th>
-                    
-                    <th style="width:80px;">Action</th>
+                    <th>Libelle </th>
+
+                    <th style="width:200px;">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -47,7 +32,6 @@ require_once(APPPATH . "views/templates/header.php");
             <tfoot>
             <tr>
                 <th>Libelle Cat</th>
-                
                 <th>Action</th>
             </tr>
             </tfoot>
@@ -239,7 +223,7 @@ function delete_categorie(Id_categorie)
                                 <span class="help-block"></span>
                             </div>
                         </div>
-                         
+
 <!--                        <div class="form-group">
                             <label class="control-label col-md-3">Gender</label>
                             <div class="col-md-9">
@@ -278,6 +262,6 @@ function delete_categorie(Id_categorie)
 <!-- End Bootstrap modal -->
 </body>
 </html>
- 
+
 <!--inner block end here-->
 <?php include(APPPATH . "views/templates/footer.php"); ?>

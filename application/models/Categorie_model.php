@@ -6,7 +6,7 @@ class Categorie_model extends CI_Model {
 	var $table = 'categories';
 	var $column_order = array('libelle_categorie'); //set column field database for datatable orderable
 	var $column_search = array('libelle_categorie'); //set column field database for datatable searchable just firstname , lastname , address are searchable
-	var $order = array('Id_categorie' => 'desc'); // default order
+	var $order = array('id' => 'desc'); // default order
 
 	public function __construct()
 	{
@@ -78,7 +78,7 @@ class Categorie_model extends CI_Model {
 	public function get_by_id($Id_categorie)
 	{
 		$this->db->from($this->table);
-		$this->db->where('Id_categorie',$Id_categorie);
+		$this->db->where('id',$Id_categorie);
 		$query = $this->db->get();
 
 		return $query->row();
@@ -98,7 +98,7 @@ class Categorie_model extends CI_Model {
 
 	public function delete_by_id($Id_categorie)
 	{
-		$this->db->where('Id_categorie', $Id_categorie);
+		$this->db->where('id', $Id_categorie);
 		$this->db->delete($this->table);
 	}
 
