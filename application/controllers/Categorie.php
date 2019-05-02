@@ -63,7 +63,7 @@ class Categorie extends CI_Controller {
 		$data = array(
 				'libelle_categorie' => $this->input->post('libelle_categorie')
 			);
-		$this->categorie->update(array('Id_categorie' => $this->input->post('Id_categorie')), $data);
+		$this->categorie->update(array('id' => $this->input->post('id')), $data);
 		echo json_encode(array("status" => TRUE));
 	}
 
