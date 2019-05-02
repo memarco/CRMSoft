@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Categorie_model extends CI_Model {
+class Type_depense_model extends CI_Model {
 
-	var $table = 'categories';
-	var $column_order = array('libelle_categorie'); //set column field database for datatable orderable
-	var $column_search = array('libelle_categorie'); //set column field database for datatable searchable just firstname , lastname , address are searchable
+	var $table = 'type_depenses';
+	var $column_order = array('libelle_type_depense'); //set column field database for datatable orderable
+	var $column_search = array('libelle_type_depense'); //set column field database for datatable searchable just firstname , lastname , address are searchable
 	var $order = array('id' => 'desc'); // default order
 
 	public function __construct()

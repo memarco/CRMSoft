@@ -61,19 +61,31 @@ $route['clients/index'] = 'clients/index';
 $route['clients/index/(:any)'] = 'clients/index/$1';
 
 
-/* client routes  */
+/* cate routes  */
 $route['categorie'] = 'categorie';
 $route['categorie/create'] = 'categorie/create';
 $route['categorie/index'] = 'categorie/index';
 $route['categorie/index/(:any)'] = 'categorie/index/$1';
 
 
+/* todo routes  */
+$route['todo'] = 'todo';
+$route['todo/create'] = 'todo/create';
+$route['todo/index'] = 'todo/index';
+$route['todo/index/(:any)'] = 'todo/index/$1';
 
 /* type_depenses routes  */
-$route['type_depenses'] = 'type_depenses';
-$route['type_depenses/create'] = 'type_depenses/create';
-$route['type_depenses/index'] = 'type_depenses/index';
-$route['type_depenses/index/(:any)'] = 'type_depenses/index/$1';
+$route['type_depense'] = 'type_depense';
+$route['type_depense/create'] = 'type_depense/create';
+$route['type_depense/index'] = 'type_depense/index';
+$route['type_depense/index/(:any)'] = 'type_depense/index/$1';
+
+
+/* type_depenses routes  */
+$route['type_payement'] = 'type_payement';
+$route['type_payement/create'] = 'type_payement/create';
+$route['type_payement/index'] = 'type_payement/index';
+$route['type_payement/index/(:any)'] = 'type_payement/index/$1';
 
 
 /* client routes  */
