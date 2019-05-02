@@ -15,6 +15,11 @@ class Client extends CI_Controller {
 		$this->load->view('client/client_view');
 	}
 
+  public function get_data()
+  {
+      echo json_encode($this->client->get_all());
+  }
+
 	public function ajax_list()
 	{
 		$list = $this->client->get_datatables();

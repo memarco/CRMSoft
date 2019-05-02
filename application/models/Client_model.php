@@ -52,7 +52,13 @@ class Client_model extends CI_Model {
 			$this->db->order_by(key($order), $order[key($order)]);
 		}
 	}
+  public function get_all()
+	{
+		$this->db->from($this->table);
+		$query = $this->db->get();
 
+		return $query->result();
+	}
 	function get_datatables()
 	{
 		$this->_get_datatables_query();

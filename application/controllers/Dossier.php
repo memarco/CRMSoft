@@ -7,6 +7,7 @@ class Dossier extends CI_Controller {
  {
    parent::__construct();
    $this->load->model('client_model','client');
+   $this->load->model('dossier_model','dossier');
  }
 
  public function index()
@@ -61,17 +62,28 @@ class Dossier extends CI_Controller {
    echo json_encode($data);
  }
 
+public function generate_num_dossier($id){
+  $time =  strtotime(date("Y-m-d H:i:s"));
+  $client = $this->client->get_by_id($id);
+  $nom = strtoupper($client->nom_client);
+  $prenom =  strtoupper($client->prenom_client);
+  return  substr($nom, 0, 1).substr($prenom,0,1).$time;
+}
+public function success(){
+  $this->load->view('dossier/success');
+}
  public function ajax_add()
  {
    $data = array(
-       'nom_client' => $this->input->post('nom_client'),
-       'prenom_client' => $this->input->post('prenom_client'),
-       'email_client' => $this->input->post('email_client'),
-                               'tel_client' => $this->input->post('tel_client'),
-       'addresse_client' => $this->input->post('addresse_client'),
-       'autre_info_client' => $this->input->post('autre_info_client')
+       'id_client' => $this->input->post('id_client'),
+       'id_categorie' => $this->input->post('id_categorie'),
+       'numero_dossier' => $this->generate_num_dossier($this->input->post('id_client')),
+       'libelle_dossier' => $this->input->post('libelle_dossier'),
+       'montant_traitement' => $this->input->post('montant_traitement'),
+       'date' => date("Y-m-d H:i:s"),
+       'description_dossier' => $this->input->post('description_dossier')
      );
-   $insert = $this->client->save($data);
+  $insert = $this->dossier->save($data);
    echo json_encode(array("status" => TRUE));
  }
 

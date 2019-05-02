@@ -15,6 +15,11 @@ class Categorie extends CI_Controller {
 		$this->load->view('categorie/categorie_view');
 	}
 
+  public function get_data()
+  { 
+      echo json_encode($this->categorie->get_all());
+  }
+
 	public function ajax_list()
 	{
 		$list = $this->categorie->get_datatables();

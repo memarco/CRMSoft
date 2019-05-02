@@ -74,7 +74,13 @@ class Categorie_model extends CI_Model {
 		$this->db->from($this->table);
 		return $this->db->count_all_results();
 	}
+	public function get_all()
+	{
+		$this->db->from($this->table);
+		$query = $this->db->get();
 
+		return $query->result();
+	}
 	public function get_by_id($id)
 	{
 		$this->db->from($this->table);
