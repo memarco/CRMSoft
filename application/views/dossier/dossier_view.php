@@ -18,12 +18,13 @@ Liste des dossiers &nbsp;
         <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
-                    <th>Nom </th>
-                    <th>Prenom</th>
-                    <th>email</th>
-                    <th>tel</th>
-                    <th>Address</th>
-                    <th>autre_infos_client</th>
+                    <th>Client </th>
+                    <th>Categorie</th>
+                    <th>Numero</th>
+                    <th>Libelle</th>
+                    <th>Montant côtation (Euro)</th>
+                    <th>Date</th>
+                    <th>Description</th>
                     <th style="width:125px;">Action</th>
                 </tr>
             </thead>
@@ -49,7 +50,7 @@ $(document).ready(function() {
 
         // Load data for the table's content from an Ajax source
         "ajax": {
-            "url": "<?php echo site_url('client/ajax_list')?>",
+            "url": "<?php echo site_url('dossier/ajax_list')?>",
             "type": "POST"
         },
 

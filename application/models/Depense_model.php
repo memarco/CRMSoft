@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dossier_model extends CI_Model {
+class Depense_model extends CI_Model {
 
- var $table = 'dossiers';
- var $column_order = array('cli.nom_client','ca.libelle_categorie','d.numero_dossier','d.libelle_dossier','d.montant_traitement','d.date','d.description_dossier'); //set column field database for datatable orderable
- var $column_search = array('nom_client','libelle_dossier'); //set column field database for datatable searchable just firstname , lastname , address are searchable
- var $order = array('d.id' => 'desc'); // default order
+ var $table = 'depenses';
+ var $column_order = array('ty.libelle_type_depense','do.libelle_dossier','dep.libelle_depense','dep.montant_depense','dep.date','dep.commentaire_depense'); //set column field database for datatable orderable
+ var $column_search = array('libelle_type_depense','libelle_depense'); //set column field database for datatable searchable just firstname , lastname , address are searchable
+ var $order = array('dep.id' => 'desc'); // default order
 
  public function __construct()
  {
@@ -17,9 +17,9 @@ class Dossier_model extends CI_Model {
  private function _get_datatables_query()
  {
 
-   $this->db->from('dossiers as d');
-   $this->db->join('clients as cli', 'cli.id = d.id_client','left');
-   $this->db->join('categories as ca', 'ca.id = d.id_categorie','left');
+   $this->db->from('depenses as dep');
+   $this->db->join('type_depenses as ty', 'ty.id = dep.	id_type_depense','left');
+   $this->db->join('dossiers as do', 'do.id = dep.id_dossier','left');
 
    $i = 0;
 

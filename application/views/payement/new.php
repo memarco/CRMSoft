@@ -9,7 +9,7 @@ require_once(APPPATH . "views/templates/header.php");
   <div class="chit-chat-layer1">
     <div class="col-md-12">
   <div class="chit-chat-heading">
-Ouverture de dossier &nbsp;
+Payement du  dossier &nbsp;
 </div>
         <br/>    <br/>
         <form action="#" id="form" class="form-horizontal">
@@ -17,43 +17,43 @@ Ouverture de dossier &nbsp;
             <div class="form-body">
                 
             <div class="form-group">
-                <label class="control-label col-md-3">Libellé du dossier :</label>
+                <label class="control-label col-md-3">Libellé:</label>
                 <div class="col-md-9">
-                    <input name="libelle_dossier"  class="form-control" type="text">
+                    <input name="libelle_payement"  class="form-control" type="text">
                     <span class="help-block"></span>
                 </div>
             </div>
                 
             <div class="form-group">
-                <label class="control-label col-md-3">Type de dossier</label>
+                <label class="control-label col-md-3">Dossier</label>
                 <div class="col-md-9">
-                    <select class="form-control" id="s_type_dossier" name="id_categorie">
+                    <select class="form-control" id="s_dossier" name="id_dossier">
                     </select>
                     <span class="help-block"></span>
                 </div>
             </div>
                 
                 <div class="form-group">
-                    <label class="control-label col-md-3">Client : </label>
+                    <label class="control-label col-md-3">Type Payement : </label>
                     <div class="col-md-9">
-                        <select class="form-control" id="s_client" name="id_client">
+                        <select class="form-control" id="s_type_payement" name="id_type_payement">
                         </select>
                         <span class="help-block"></span>
                     </div>
                 </div>
                 
                 <div class="form-group">
-                    <label class="control-label col-md-3">Montant côtation (Euro) :</label>
+                    <label class="control-label col-md-3">Montant Payement :</label>
                     <div class="col-md-9">
-                        <input name="montant_traitement"    class="form-control" type="text">
+                        <input name="montant_payement"    class="form-control" type="text">
                         <span class="help-block"></span>
                     </div>
                 </div>
                 
               <div class="form-group">
-                    <label class="control-label col-md-3">Description :</label>
+                    <label class="control-label col-md-3">Commentaire :</label>
                     <div class="col-md-9">
-                        <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="2" name="description_dossier"></textarea>
+                        <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="2" name="commentaire_payement"></textarea>
                         <span class="help-block"></span>
                     </div>
                 </div>
@@ -69,11 +69,11 @@ Ouverture de dossier &nbsp;
 
 <script type="text/javascript">
 
-function bind_type_dossier()
+function bind_dossier()
 {
     //Ajax Load data from ajax
     $.ajax({
-        url : "<?php echo site_url('categorie/get_data')?>",
+        url : "<?php echo site_url('dossier/get_data')?>",
         type: "GET",
         dataType: "JSON",
         success: function(data)
@@ -81,9 +81,9 @@ function bind_type_dossier()
           var items = "";
            items += "<option value='' disabled selected>- Choisir -</option>";
            $.each(data, function (i, item) {
-                 items += "<option value='" + item.id + "'>" + (item.libelle_categorie) + "</option>";
+                 items += "<option value='" + item.id + "'>" + (item.libelle_dossier) + "</option>";
            });
-           $("#s_type_dossier").html(items);
+           $("#s_dossier").html(items);
 
 
         },
@@ -94,11 +94,11 @@ function bind_type_dossier()
     });
 }
 
-function bind_client()
+function bind_type_payement()
 {
     //Ajax Load data from ajax
     $.ajax({
-        url : "<?php echo site_url('client/get_data')?>",
+        url : "<?php echo site_url('type_payement/get_data')?>",
         type: "GET",
         dataType: "JSON",
         success: function(data)
@@ -106,9 +106,9 @@ function bind_client()
           var items = "";
            items += "<option value='' disabled selected>- Choisir -</option>";
            $.each(data, function (i, item) {
-                 items += "<option value='" + item.id + "'>" + (item.nom_client +" "+item.prenom_client) + "</option>";
+                 items += "<option value='" + item.id + "'>" + (item.type_payement_libelle) + "</option>";
            });
-           $("#s_client").html(items);
+           $("#s_type_payement").html(items);
 
 
         },
@@ -126,7 +126,7 @@ function save()
 
     // ajax adding data to database
     $.ajax({
-        url : "<?php echo site_url('dossier/ajax_add')?>",
+        url : "<?php echo site_url('payement/ajax_add')?>",
         type: "POST",
         data: $('#form').serialize(),
         dataType: "JSON",
@@ -134,7 +134,7 @@ function save()
         {
             if(data.status) //if success close modal and reload ajax table
             {
-                    window.location.href = "<?php echo site_url('dossier/success')?>";
+                    window.location.href = "<?php echo site_url('payement/success')?>";
             }
         },
         error: function (jqXHR, textStatus, errorThrown)
@@ -145,8 +145,8 @@ function save()
     });
 }
 $(document).ready(function() {
- bind_type_dossier();
- bind_client();
+ bind_dossier();
+ bind_type_payement();
 });
 </script>
 <!--inner block end here-->

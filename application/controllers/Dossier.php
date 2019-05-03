@@ -15,6 +15,12 @@ class Dossier extends CI_Controller {
    $this->load->helper('url');
    $this->load->view('dossier/dossier_view');
  }
+ 
+ 
+ public function get_data()
+  {
+      echo json_encode($this->dossier->get_all());
+  }
 
  public function open()
  {
@@ -25,22 +31,23 @@ class Dossier extends CI_Controller {
 
  public function ajax_list()
  {
-   $list = $this->client->get_datatables();
+   $list = $this->dossier->get_datatables();
    $data = array();
    $no = $_POST['start'];
-   foreach ($list as $client) {
+   foreach ($list as $dossier) {
      $no++;
      $row = array();
-     $row[] = $client->nom_client;
-     $row[] = $client->prenom_client;
-     $row[] = $client->email_client;
-                       $row[] = $client->tel_client;
-                       $row[] = $client->addresse_client;
-     $row[] = $client->autre_info_client;
+     $row[] = $dossier->nom_client;
+     $row[] = $dossier->libelle_categorie;
+     $row[] = $dossier->numero_dossier;
+     $row[] = $dossier->libelle_dossier;
+     $row[] = $dossier->montant_traitement;
+     $row[] = $dossier->date;
+     $row[] = $dossier->description_dossier;
 
      //add html for action
-     $row[] = '<a href="javascript:void(0);" class="btn btn-info btn-sm editRecord"   title="Edit" onclick="edit_client('."'".$client->id."'".')">  Edit</a>
-        <a href="javascript:void(0);" class="btn btn-danger btn-sm deleteRecord"   title="Hapus" onclick="delete_client('."'".$client->id."'".')">  Delete</a>';
+     $row[] = '<a href="javascript:void(0);" class="btn btn-info btn-sm editRecord"   title="Edit" onclick="edit_dossier('."'".$dossier->id."'".')">  Edit</a>
+        <a href="javascript:void(0);" class="btn btn-danger btn-sm deleteRecord"   title="Hapus" onclick="delete_dossier('."'".$dossier->id."'".')">  Delete</a>';
 
 
      $data[] = $row;
@@ -48,8 +55,8 @@ class Dossier extends CI_Controller {
 
    $output = array(
            "draw" => $_POST['draw'],
-           "recordsTotal" => $this->client->count_all(),
-           "recordsFiltered" => $this->client->count_filtered(),
+           "recordsTotal" => $this->dossier->count_all(),
+           "recordsFiltered" => $this->dossier->count_filtered(),
            "data" => $data,
        );
    //output to json format
@@ -58,7 +65,7 @@ class Dossier extends CI_Controller {
 
  public function ajax_edit($id)
  {
-   $data = $this->client->get_by_id($id);
+   $data = $this->dossier->get_by_id($id);
    echo json_encode($data);
  }
 
@@ -103,7 +110,7 @@ public function success(){
 
  public function ajax_delete($id)
  {
-   $this->client->delete_by_id($id);
+   $this->dossier->delete_by_id($id);
    echo json_encode(array("status" => TRUE));
  }
 

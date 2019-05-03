@@ -13,6 +13,15 @@ class Type_depense_model extends CI_Model {
 		parent::__construct();
 		$this->load->database();
 	}
+        
+        
+        public function get_all()
+        {
+          $this->db->from($this->table);
+          $query = $this->db->get();
+
+          return $query->result();
+        }
 
 	private function _get_datatables_query()
 	{

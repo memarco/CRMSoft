@@ -14,6 +14,12 @@ class Type_depense extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->view('type_depense/type_depense_view');
 	}
+        
+        
+        public function get_data()
+  {
+      echo json_encode($this->type_depense->get_all());
+  }
 
 	public function ajax_list()
 	{
