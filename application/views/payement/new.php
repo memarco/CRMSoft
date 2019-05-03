@@ -15,7 +15,16 @@ Payement du  dossier &nbsp;
         <form action="#" id="form" class="form-horizontal">
             <input type="hidden" value="" name="id"/>
             <div class="form-body">
-                
+
+          <div class="form-group">
+              <label class="control-label col-md-3">Dossier</label>
+              <div class="col-md-9">
+                  <select class="form-control" id="s_dossier" name="id_dossier">
+                  </select>
+                  <span class="help-block"></span>
+              </div>
+          </div>
+
             <div class="form-group">
                 <label class="control-label col-md-3">Libellé:</label>
                 <div class="col-md-9">
@@ -23,16 +32,7 @@ Payement du  dossier &nbsp;
                     <span class="help-block"></span>
                 </div>
             </div>
-                
-            <div class="form-group">
-                <label class="control-label col-md-3">Dossier</label>
-                <div class="col-md-9">
-                    <select class="form-control" id="s_dossier" name="id_dossier">
-                    </select>
-                    <span class="help-block"></span>
-                </div>
-            </div>
-                
+
                 <div class="form-group">
                     <label class="control-label col-md-3">Type Payement : </label>
                     <div class="col-md-9">
@@ -41,15 +41,15 @@ Payement du  dossier &nbsp;
                         <span class="help-block"></span>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label class="control-label col-md-3">Montant Payement :</label>
                     <div class="col-md-9">
-                        <input name="montant_payement"    class="form-control" type="text">
+                        <input name="montant_payement"    class="form-control" type="number">
                         <span class="help-block"></span>
                     </div>
                 </div>
-                
+
               <div class="form-group">
                     <label class="control-label col-md-3">Commentaire :</label>
                     <div class="col-md-9">

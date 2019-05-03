@@ -15,8 +15,8 @@ class Dossier extends CI_Controller {
    $this->load->helper('url');
    $this->load->view('dossier/dossier_view');
  }
- 
- 
+
+
  public function get_data()
   {
       echo json_encode($this->dossier->get_all());
@@ -37,17 +37,17 @@ class Dossier extends CI_Controller {
    foreach ($list as $dossier) {
      $no++;
      $row = array();
-     $row[] = $dossier->nom_client;
+     $row[] = $dossier->nom_client.' '.$dossier->prenom_client;
      $row[] = $dossier->libelle_categorie;
      $row[] = $dossier->numero_dossier;
      $row[] = $dossier->libelle_dossier;
-     $row[] = $dossier->montant_traitement;
+     $row[] ='<div style="text-align:center; font-weight:bold; width:100%">'.$dossier->montant_traitement.'</div>';
      $row[] = $dossier->date;
      $row[] = $dossier->description_dossier;
 
      //add html for action
-     $row[] = '<a href="javascript:void(0);" class="btn btn-info btn-sm editRecord"   title="Edit" onclick="edit_dossier('."'".$dossier->id."'".')">  Edit</a>
-        <a href="javascript:void(0);" class="btn btn-danger btn-sm deleteRecord"   title="Hapus" onclick="delete_dossier('."'".$dossier->id."'".')">  Delete</a>';
+     $row[] = '<a href="javascript:void(0);" class="btn btn-info btn-sm editRecord"   title="Edit" onclick="edit_dossier('."'".$dossier->id."'".')">  Paiment</a>
+        <a href="javascript:void(0);" class="btn btn-danger btn-sm deleteRecord"   title="Hapus" onclick="delete_dossier('."'".$dossier->id."'".')">  Dépense</a>';
 
 
      $data[] = $row;

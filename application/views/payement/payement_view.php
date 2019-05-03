@@ -19,8 +19,7 @@ Liste des payements &nbsp;
             <thead>
                 <tr>
                     <th>Dossier </th>
-                    <th>Type Payement</th>
-                    <th>Numero</th>
+                    <th>Type Payement</th> 
                     <th>Libelle</th>
                     <th>Montant (Euro)</th>
                     <th>Date</th>
@@ -94,7 +93,7 @@ function edit_payement(id)
     $('#form')[0].reset(); // reset form on modals
     $('.form-group').removeClass('has-error'); // clear error class
     $('.help-block').empty(); // clear error string
-     
+
     //Ajax Load data from ajax
     $.ajax({
         url : "<?php echo site_url('payement/ajax_edit/')?>/" + id,
@@ -117,7 +116,7 @@ function edit_payement(id)
         error: function (jqXHR, textStatus, errorThrown)
         {
             alert('Error get data from ajax');
-            
+
         }
     });
 }

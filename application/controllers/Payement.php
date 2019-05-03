@@ -29,17 +29,16 @@ class Payement extends CI_Controller {
    $data = array();
    $no = $_POST['start'];
    foreach ($list as $payement) {
-       
+
      $no++;
      $row = array();
      $row[] = $payement->libelle_dossier;
      $row[] = $payement->type_payement_libelle;
-     $row[] = $payement->numero_payement;
      $row[] = $payement->libelle_payement;
      $row[] = $payement->montant_payement;
      $row[] = $payement->date;
      $row[] = $payement->commentaire_payement;
-                                                  
+
      //add html for action
      $row[] = '<a href="javascript:void(0);" class="btn btn-info btn-sm editRecord"   title="Edit" onclick="edit_payement('."'".$payement->id."'".')">  Edit</a>
         <a href="javascript:void(0);" class="btn btn-danger btn-sm deleteRecord"   title="Hapus" onclick="delete_payement('."'".$payement->id."'".')">  Delete</a>';

@@ -22,8 +22,8 @@ Liste des dossiers &nbsp;
                     <th>Categorie</th>
                     <th>Numero</th>
                     <th>Libelle</th>
-                    <th>Montant côtation (Euro)</th>
-                    <th>Date</th>
+                    <th>Montant (Euro)</th>
+                    <th>Date démarrage</th>
                     <th>Description</th>
                     <th style="width:125px;">Action</th>
                 </tr>

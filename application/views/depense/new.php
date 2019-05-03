@@ -9,13 +9,13 @@ require_once(APPPATH . "views/templates/header.php");
   <div class="chit-chat-layer1">
     <div class="col-md-12">
   <div class="chit-chat-heading">
-Ouverture des Depenses &nbsp;
+Nouvelle Dépense &nbsp;
 </div>
         <br/>    <br/>
         <form action="#" id="form" class="form-horizontal">
             <input type="hidden" value="" name="id"/>
             <div class="form-body">
-                
+
             <div class="form-group">
                 <label class="control-label col-md-3">Libelle Type depense</label>
                 <div class="col-md-9">
@@ -24,8 +24,8 @@ Ouverture des Depenses &nbsp;
                     <span class="help-block"></span>
                 </div>
             </div>
-                 
-                 
+
+
             <div class="form-group">
                     <label class="control-label col-md-3">Dossier : </label>
                     <div class="col-md-9">
@@ -34,7 +34,7 @@ Ouverture des Depenses &nbsp;
                         <span class="help-block"></span>
                     </div>
             </div>
-                     
+
             <div class="form-group">
                 <label class="control-label col-md-3">Libellé depense :</label>
                 <div class="col-md-9">
@@ -42,7 +42,7 @@ Ouverture des Depenses &nbsp;
                     <span class="help-block"></span>
                 </div>
             </div>
-            
+
                 <div class="form-group">
                     <label class="control-label col-md-3">Montant (Euro) :</label>
                     <div class="col-md-9">
@@ -50,7 +50,7 @@ Ouverture des Depenses &nbsp;
                         <span class="help-block"></span>
                     </div>
                 </div>
-                
+
               <div class="form-group">
                     <label class="control-label col-md-3">Commentaire :</label>
                     <div class="col-md-9">
@@ -109,7 +109,7 @@ function bind_dossier()
            $.each(data, function (i, item) {
                  items += "<option value='" + item.id + "'>" + (item.libelle_dossier) + "</option>";
            });
-           $("#s_client").html(items);
+           $("#s_dossier").html(items);
 
 
         },
