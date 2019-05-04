@@ -34,7 +34,7 @@ class Depense extends CI_Controller {
    $list = $this->depense->get_datatables();
    $data = array();
    $no = $_POST['start'];
-   foreach ($list as $dossier) {
+   foreach ($list as $depense) {
      $no++;
      $row = array();
      $row[] = $depense->libelle_type_depense;

@@ -23,7 +23,7 @@ require_once(APPPATH . "views/templates/header.php");
                     <th>Libelle</th>
                     <th>Montant (Euro)</th>
                     <th>Date</th>
-                    <th>Commentaire/th>
+                    <th>Commentaire</th>
                     <th style="width:125px;">Action</th>
                 </tr>
             </thead>

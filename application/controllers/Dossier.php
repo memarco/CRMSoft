@@ -27,8 +27,20 @@ class Dossier extends CI_Controller {
    $this->load->helper('url');
    $this->load->view('dossier/new');
  }
-
-
+ 
+ public function dep()
+ {
+   $this->load->helper('url');
+   $this->load->view('dossier/edit_payement');
+ }
+ 
+ public function paye()
+ {
+   $this->load->helper('url');
+   $this->load->view('dossier/edit_depense');
+ }
+ 
+ 
  public function ajax_list()
  {
    $list = $this->dossier->get_datatables();
@@ -46,10 +58,13 @@ class Dossier extends CI_Controller {
      $row[] = $dossier->description_dossier;
 
      //add html for action
-     $row[] = '<a href="javascript:void(0);" class="btn btn-info btn-sm editRecord"   title="Edit" onclick="edit_dossier('."'".$dossier->id."'".')">  Paiment</a>
-        <a href="javascript:void(0);" class="btn btn-danger btn-sm deleteRecord"   title="Hapus" onclick="delete_dossier('."'".$dossier->id."'".')">  Dépense</a>';
+//     $row[] = '<a href="javascript:void(0);" class="btn btn-info btn-sm editRecord"   title="Edit" onclick="edit_dossier('."'".$dossier->id."'".')">  Paiment</a>
+//        <a href="javascript:void(0);" class="btn btn-danger btn-sm deleteRecord"   title="Hapus" onclick="delete_dossier('."'".$dossier->id."'".')">  Dépense</a>';
+     
+      $row[] = '<a class="btn btn-info btn-sm editRecord"   title="Edit" href="'.base_url().'index.php/dossier/dep/ ">  Paiment</a>
+        <a class="btn btn-danger btn-sm deleteRecord"   title="Hapus" href="'.base_url().'index.php/dossier/paye/ ">  Dépense</a>';
 
-
+    
      $data[] = $row;
    }
 
