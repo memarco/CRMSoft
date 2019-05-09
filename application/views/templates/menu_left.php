@@ -5,7 +5,12 @@
     <div class="menu">
       <ul id="menu">
         <li id="menu-home" ><a href="<?php echo base_url() ?>"><i class="fa fa-tachometer"></i><span>Dashboard</span></a></li>
-        <li id="menu-comunicacao" ><a href="<?php echo base_url(); ?>index.php/dossier"><i class="fa fa-book nav_icon"></i><span>Dossiers</span></span></a></li>
+        <li id="menu-comunicacao" ><a href="<?php echo base_url(); ?>index.php/dossier"><i class="fa fa-book nav_icon"></i><span>Dossiers</span></span></a>
+           <ul id="menu-academico-sub" >
+               <li id="menu-academico-avaliacoes" ><a href="<?php echo base_url(); ?>index.php/dossier">Gestion</a></li>
+                 <li id="menu-academico-avaliacoes" ><a href="<?php echo base_url(); ?>index.php/dossier/suivi">Suivi</a></li> 
+             </ul>
+         </li>
         <li id="menu-academico" ><a href="<?php echo base_url(); ?>index.php/payement"><i class="fa fa-money"></i><span>Paiments</span></a></li>
         <li id="menu-academico" ><a href="<?php echo base_url(); ?>index.php/depense"><i class="fa fa-credit-card"></i><span>Dépenses</span></a></li>
         <li><a href="charts.html"><i class="fa fa-bar-chart"></i><span>Rapports</span></a></li>
