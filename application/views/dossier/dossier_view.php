@@ -25,7 +25,7 @@ Liste des dossiers &nbsp;
                     <th>Montant (Euro)</th>
                     <th>Date démarrage</th>
                     <th>Description</th>
-                    <th style="width:125px;">Action</th>
+                    <th style="width:80px;">Action</th>
                 </tr>
             </thead>
             <tbody>
