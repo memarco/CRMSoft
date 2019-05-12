@@ -43,7 +43,7 @@ Liste des dossiers &nbsp;
       <td class="text-center">11500</td>
       <td class="text-center">10000</td>
       <td class="text-center"><p class="label-danger" style="color:white">- 1 500</p></td>
-      <td class="text-center"><a href="#" title="Voir le suivi" onclick="suivi_dossier()"><i class="fa fa-eye"></i></a></td>
+      <td class="text-center"><a href="<?php echo base_url('index.php/dossier/detail_suivi') ?>" title="Voir le suivi"  onclick="suivi_dossier()"><i class="fa fa-eye"></i></a></td>
   </tr>
   <tr>
       <td>2</td>
@@ -55,7 +55,7 @@ Liste des dossiers &nbsp;
       <td class="text-center">15000</td>
       <td class="text-center">11500</td>
       <td class="text-center"><p class="bg-primary" style="color:white"> 0 </p></td>
-      <td class="text-center"><a href="#" title="Voir le suivi" onclick="suivi_dossier()"><i class="fa fa-eye"></i></a></td>
+      <td class="text-center"><a href="<?php echo base_url('index.php/dossier/detail_suivi') ?>" title="Voir le suivi" onclick="suivi_dossier()"><i class="fa fa-eye"></i></a></td>
   </tr>
   <tr>
       <td>3</td>
@@ -67,7 +67,7 @@ Liste des dossiers &nbsp;
       <td class="text-center">1500</td>
       <td class="text-center">5000</td>
       <td class="text-center"><p class="label-success" style="color:white">3 500</p></td>
-      <td class="text-center"><a href="#" title="Voir le suivi" onclick="suivi_dossier()"><i class="fa fa-eye"></i></a></td>
+      <td class="text-center"><a href="<?php echo base_url('index.php/dossier/detail_suivi') ?>" title="Voir le suivi"  onclick="suivi_dossier()"><i class="fa fa-eye"></i></a></td>
   </tr>
   <tr>
       <td>4</td>
@@ -79,7 +79,7 @@ Liste des dossiers &nbsp;
       <td class="text-center">1500</td>
       <td class="text-center">1000</td>
       <td class="text-center"><p class="label-success" style="color:white">3 500</p></td>
-      <td class="text-center"><a href="#" title="Voir le suivi" onclick="suivi_dossier()"><i class="fa fa-eye"></i></a></td>
+      <td class="text-center"><a href="<?php echo base_url('index.php/dossier/detail_suivi') ?>" title="Voir le suivi"  onclick="suivi_dossier()"><i class="fa fa-eye"></i></a></td>
   </tr>
   <tr>
       <td>5</td>
@@ -91,7 +91,7 @@ Liste des dossiers &nbsp;
       <td class="text-center">1500</td>
       <td class="text-center">1000</td>
       <td class="text-center"><p class="label-success" style="color:white">3 500</p></td>
-      <td class="text-center"><a href="#" title="Voir le suivi" onclick="suivi_dossier()"><i class="fa fa-eye"></i></a></td>
+      <td class="text-center"><a href="<?php echo base_url('index.php/dossier/detail_suivi') ?>" title="Voir le suivi"  onclick="suivi_dossier()"><i class="fa fa-eye"></i></a></td>
   </tr>
   <tr>
       <td>6</td>
@@ -102,7 +102,7 @@ Liste des dossiers &nbsp;
       <td class="text-center">1500</td>
       <td class="text-center">1000</td>
       <td class="text-center"><p class="label-success" style="color:white">3 500</p></td>
-      <td class="text-center"><a href="#" title="Voir le suivi" onclick="suivi_dossier()"><i class="fa fa-eye"></i></a></td>
+      <td class="text-center"><a href="<?php echo base_url('index.php/dossier/detail_suivi') ?>" title="Voir le suivi"  onclick="suivi_dossier()"><i class="fa fa-eye"></i></a></td>
   </tr>
 </tbody>
 </table>
@@ -268,104 +268,7 @@ function delete_client(id)
 
 </script>
 
-<!-- Bootstrap modal -->
-<div class="modal fade " id="modal_detail" role="dialog">
- <div class="modal-dialog modal-xxl">
-        <div class="modal-content" style="font-size:9px">
-            <div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
-        <div class="col-lg-12" style=" margin-top:20px; font-size:10">
-          <div class="col-lg-6"  style="text-align:left;">
-              <span style="font-weight:bold">Dossier :</span> <span>PK2150118360</span> - <span>CAMION MERCEDES 5214</span>
-          </div>
-          <div class="col-lg-6"  style="text-align:left; margin-top:10px">
-             <span style="font-weight:bold">Type de dossier :</span> <span>DEDOUANEMENT</span>
-          </div>
-          <div class="col-lg-6" style="text-align:left; margin-top:10px">
-              <span style="font-weight:bold">Client :</span> <span>Pierre KAMBOU</span>
-          </div>
-          <div class="col-lg-3" style="text-align:left; margin-top:10px">
-              <span style="font-weight:bold">Montant cotation :</span> <span>15000</span>
-          </div>
-          <div class="col-lg-3" style="text-align:right; margin-top:10px">
-              <span style="font-weight:bold">Marge :</span> <span  class="label-success" style="color:white">&nbsp; 3 500 &nbsp;</span>
-          </div>
-        </div>
-            </div>
-            <div class="modal-body">
-              <div class="col-lg-12" >
-                <div class="col-lg-6">
-                  <div class="col-lg-12" style="float: left; border-bottom: solid 1px green; margin-top: 10px">
-                                      PAIEMENTS
-                              </div>
-                              <div class="col-lg-12 table-responsive">
-                                  <table class="table table-hover">
-                                    <thead>
-                                      <tr>
-                                        <th>#</th>
-                                        <th>Date</th>
-                                        <th class="text-center">Montant (€)</th>
-                                        <th class="text-center">Type de paiement)</th>
-                                        <th class="text-center">Commentaires</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <td>1</td>
-                                    <td>06/05/2019</td>
-                                    <td class="text-center"><span style="font-weight: bold;">1500</span></td>
-                                    <td class="text-center">PAYPAL</td>
-                                    <td class="text-center">
-                                          <i class="fa fa-comment" title="Avance frais de Transport"></i>
-                                      </td>
-                                 </tr>
-                                   <tr>
-                                     <td>1</td>
-                                     <td>06/05/2019</td>
-                                     <td class="text-center"><span style="font-weight: bold;">1500</span></td>
-                                     <td class="text-center">PAYPAL</td>
-                                     <td class="text-center">
-                                           <i class="fa fa-comment" title="Avance frais de Transport"></i>
-                                       </td>
-                                  </tr>
-                                    <tr>
-                                      <td>1</td>
-                                      <td>06/05/2019</td>
-                                      <td class="text-center"><span style="font-weight: bold;">500</span></td>
-                                      <td class="text-center">CASH</td>
-                                      <td class="text-center">
-                                            <i class="fa fa-comment" title="Avance frais de Transport"></i>
-                                        </td>
-                                   </tr>
-                                     <tr>
-                                       <td>1</td>
-                                       <td>06/05/2019</td>
-                                       <td class="text-center"><span style="font-weight: bold;">780</span></td>
-                                       <td class="text-center">VIREMENT</td>
-                                       <td class="text-center">
-                                             <i class="fa fa-comment" title="Avance frais de Transport"></i>
-                                         </td>
-                                    </tr>
-                               </tbody>
-                             </table></div>
-                </div>
-
-                    <div class="col-lg-6">
-                      <div class="col-lg-12" style="float: left; border-bottom: solid 1px red; margin-top: 10px">
-                                          DEPENSES
-                                  </div>
-                    </div>
-
-              </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Save</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 <!-- End Bootstrap modal -->
 
 <!-- Modal pour le formulaire -->

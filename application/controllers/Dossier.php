@@ -23,6 +23,13 @@ class Dossier extends CI_Controller {
     $this->load->view('dossier/suivi');
   }
 
+  public function detail_suivi()
+  {
+    $this->load->helper('url');
+    $this->load->view('dossier/detail_suivi');
+  }
+
+
  public function get_data()
   {
       echo json_encode($this->dossier->get_all());
@@ -37,13 +44,13 @@ class Dossier extends CI_Controller {
  public function dep()
  {
    $this->load->helper('url');
-   $this->load->view('dossier/edit_payement');
+   $this->load->view('dossier/edit_depense');
  }
 
  public function paye()
  {
    $this->load->helper('url');
-   $this->load->view('dossier/edit_depense');
+   $this->load->view('dossier/edit_payement');
  }
 
 

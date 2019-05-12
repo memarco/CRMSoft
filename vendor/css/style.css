@@ -54,7 +54,7 @@ a:hover {
 }
 .page-container.sidebar-collapsed .left-content {
    float: right;
-   width: 96%;
+   width: 95%;
 }
 .page-container.sidebar-collapsed-back {
     transition: all 100ms linear;
@@ -65,7 +65,7 @@ a:hover {
     -moz-transition: all 0.3s ease;
     transition: all 0.3s ease;
 	float: right;
-    width:86%;
+    width:92%;
 }
 .page-container.sidebar-collapsed .sidebar-menu {
   width: 65px;
@@ -74,7 +74,7 @@ a:hover {
 }
 
 .page-container.sidebar-collapsed-back .sidebar-menu {
-  width: 230px;
+  width: 120px;
   transition: all 100ms ease-in-out;
 }
 
@@ -126,7 +126,7 @@ a:hover {
 .sidebar-menu {
   position: absolute;
   float: left;
-  width: 220px;
+  width: 120px;
   top: 0px;
   left:0px;
   bottom: 0;
@@ -219,7 +219,7 @@ a:hover {
   box-sizing: border-box;
   position: absolute;
    top: 20px;
-   left: 170px;
+   left: 130px;
 }
 .sidebar-icon {
     position: relative;
@@ -387,6 +387,16 @@ li.dropdown.head-dpdn {
     display: inline-block;
     padding: 1em 0;
 	float: left;
+}
+
+.modal-xxl{
+  width: 899px;
+}
+
+@media (min-width:900px){
+.modal-xxl{
+  width: 1024px;
+}
 }
 li.dropdown.head-dpdn a.dropdown-toggle {
    margin: 1em 2em;
@@ -3084,10 +3094,10 @@ p.bottom {
 /*--meadia quiries start here--*/
 @media (max-width:1440px){
 .page-container.sidebar-collapsed-back .sidebar-menu {
-    width: 190px;
+    width: 120px;
 }
 .sidebar-menu {
-    width: 190px;
+    width: 120px;
 }
 .logo {
     left: 130px;
@@ -3289,7 +3299,7 @@ span.malorum-pro {
     left: 145px;
 }
 .left-content {
-    width: 82%;
+    width: 92%;
 }
 .chit-chat-layer1-rit {
     padding:0em 0em 0em 0.5em;
@@ -3744,7 +3754,7 @@ span.malorum-pro {
 .sidebar-menu {
 	position:absolute;
 	float: left;
-	width: 170px;
+	width: 120px;
 }
 .left-content {
 	float: right;
@@ -3772,7 +3782,7 @@ span.malorum-pro {
 	width: 92%;
 }
 .page-container.sidebar-collapsed .sidebar-menu {
-	 width:180px;
+	 width:120px;
 	transition: all 100ms ease-in-out;
 	transition-delay: 300ms;
 }
@@ -4699,7 +4709,7 @@ ul.dropdown-menu {
     font-size: 1em;
 }
 .page-container.sidebar-collapsed .sidebar-menu {
-    width: 130px;
+    width: 120px;
 }
 .market-update-block h3 {
     font-size: 1.7em;
