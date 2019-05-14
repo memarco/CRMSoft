@@ -38,7 +38,7 @@ class Depense extends CI_Controller {
      $no++;
      $row = array();
      $row[] = $depense->libelle_type_depense;
-     $row[] = $depense->libelle_dossier;
+     $row[] = $depense->numero_dossier;
 //     $row[] = $depense->num_depense;
      $row[] = $depense->libelle_depense;
      $row[] = $depense->montant_depense;

@@ -17,7 +17,7 @@ Liste des dossiers &nbsp;
 </div>
 
 <div class="table-responsive">
-    <table class="table table-hover">
+    <table id="table" class="table table-hover">
       <thead>
         <tr>
           <th>#</th>
@@ -33,7 +33,7 @@ Liste des dossiers &nbsp;
       </tr>
   </thead>
   <tbody>
-    <tr>
+<!--    <tr>
       <td>1</td>
       <td><span style="font-weight: bold;">CAMION MERCEDES 5214</span></td>
       <td>Malbum Hadamou</td>
@@ -43,9 +43,9 @@ Liste des dossiers &nbsp;
       <td class="text-center">11500</td>
       <td class="text-center">10000</td>
       <td class="text-center"><p class="label-danger" style="color:white">- 1 500</p></td>
-      <td class="text-center"><a href="<?php echo base_url('index.php/dossier/detail_suivi') ?>" title="Voir le suivi"  onclick="suivi_dossier()"><i class="fa fa-eye"></i></a></td>
-  </tr>
-  <tr>
+      <td class="text-center"><a href="<-?php echo base_url('index.php/dossier/detail_suivi') ?>" title="Voir le suivi"  onclick="suivi_dossier()"><i class="fa fa-eye"></i></a></td>
+  </tr>-->
+<!--  <tr>
       <td>2</td>
       <td><span style="font-weight: bold;">SEMI REMORQUE HONDA</span></td>
       <td>Evan</td>
@@ -55,9 +55,9 @@ Liste des dossiers &nbsp;
       <td class="text-center">15000</td>
       <td class="text-center">11500</td>
       <td class="text-center"><p class="bg-primary" style="color:white"> 0 </p></td>
-      <td class="text-center"><a href="<?php echo base_url('index.php/dossier/detail_suivi') ?>" title="Voir le suivi" onclick="suivi_dossier()"><i class="fa fa-eye"></i></a></td>
-  </tr>
-  <tr>
+      <td class="text-center"><a href="<--?php echo base_url('index.php/dossier/detail_suivi') ?-->
+<!--  </tr>-->
+<!--  <tr>
       <td>3</td>
       <td><span style="font-weight: bold;">TOYOTA YARIS</span></td>
       <td>John</td>
@@ -67,9 +67,9 @@ Liste des dossiers &nbsp;
       <td class="text-center">1500</td>
       <td class="text-center">5000</td>
       <td class="text-center"><p class="label-success" style="color:white">3 500</p></td>
-      <td class="text-center"><a href="<?php echo base_url('index.php/dossier/detail_suivi') ?>" title="Voir le suivi"  onclick="suivi_dossier()"><i class="fa fa-eye"></i></a></td>
-  </tr>
-  <tr>
+      <td class="text-center"><a href="<-?php echo base_url('index.php/dossier/detail_suivi') ?>" title="Voir le suivi"  onclick="suivi_dossier()"><i class="fa fa-eye"></i></a></td>
+  </tr>-->
+<!--  <tr>
       <td>4</td>
       <td><span style="font-weight: bold;">RENAULT SAFRAN</span></td>
       <td>Danial</td>
@@ -79,9 +79,9 @@ Liste des dossiers &nbsp;
       <td class="text-center">1500</td>
       <td class="text-center">1000</td>
       <td class="text-center"><p class="label-success" style="color:white">3 500</p></td>
-      <td class="text-center"><a href="<?php echo base_url('index.php/dossier/detail_suivi') ?>" title="Voir le suivi"  onclick="suivi_dossier()"><i class="fa fa-eye"></i></a></td>
-  </tr>
-  <tr>
+      <td class="text-center"><a href="<-?php echo base_url('index.php/dossier/detail_suivi') ?>" title="Voir le suivi"  onclick="suivi_dossier()"><i class="fa fa-eye"></i></a></td>
+  </tr>-->
+<!--  <tr>
       <td>5</td>
       <td><span style="font-weight: bold;">OPEL ASTRA</span></td>
       <td>David</td>
@@ -91,9 +91,9 @@ Liste des dossiers &nbsp;
       <td class="text-center">1500</td>
       <td class="text-center">1000</td>
       <td class="text-center"><p class="label-success" style="color:white">3 500</p></td>
-      <td class="text-center"><a href="<?php echo base_url('index.php/dossier/detail_suivi') ?>" title="Voir le suivi"  onclick="suivi_dossier()"><i class="fa fa-eye"></i></a></td>
-  </tr>
-  <tr>
+      <td class="text-center"><a href="<(?php echo base_url('index.php/dossier/detail_suivi') ?>" title="Voir le suivi"  onclick="suivi_dossier()"><i class="fa fa-eye"></i></a></td>
+  </tr>-->
+<!--  <tr>
       <td>6</td>
       <td><span style="font-weight: bold;">FORD Focus</span></td>
       <td>Mickey</td>
@@ -102,8 +102,8 @@ Liste des dossiers &nbsp;
       <td class="text-center">1500</td>
       <td class="text-center">1000</td>
       <td class="text-center"><p class="label-success" style="color:white">3 500</p></td>
-      <td class="text-center"><a href="<?php echo base_url('index.php/dossier/detail_suivi') ?>" title="Voir le suivi"  onclick="suivi_dossier()"><i class="fa fa-eye"></i></a></td>
-  </tr>
+      <td class="text-center"><a href="<-?php echo base_url('index.php/dossier/detail_suivi') ?>" title="Voir le suivi"  onclick="suivi_dossier()"><i class="fa fa-eye"></i></a></td>
+  </tr>-->
 </tbody>
 </table>
 </div>
@@ -120,14 +120,29 @@ $(document).ready(function() {
 
     //datatables
     table = $('#table').DataTable({
-
+     
         "processing": true, //Feature control the processing indicator.
         "serverSide": true, //Feature control DataTables' server-side processing mode.
         "order": [], //Initial no order.
+        
+        rowCallback: function(row, data, index){
+  	if(data[3] == "Termine"){
+    	$(row).find('td:eq(3)').css('color', 'green');
+            }
+        if(data[3] == "Encours"){
+    	$(row).find('td:eq(3)').css('color', 'blue');
+            }
+        if(data[3] == "En attente"){
+    	$(row).find('td:eq(3)').css('color', 'yellow');
+            }
+        if(data[7] < 0){
+                $(row).find('td:eq(7)').css('color', 'red');
+            }
+        },
 
         // Load data for the table's content from an Ajax source
         "ajax": {
-            "url": "<?php echo site_url('dossier/ajax_list')?>",
+            "url": "<?php echo site_url('suivi_dossier/ajax_list_suivi')?>",
             "type": "POST"
         },
 

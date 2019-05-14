@@ -65,7 +65,7 @@ class Dossier extends CI_Controller {
      $row[] = $dossier->nom_client.' '.$dossier->prenom_client;
      $row[] = $dossier->libelle_categorie;
      $row[] = $dossier->numero_dossier;
-     $row[] = $dossier->libelle_dossier;
+     $row[] = $dossier->status_dossier;
      $row[] ='<div style="text-align:center; font-weight:bold; width:100%">'.$dossier->montant_traitement.'</div>';
      $row[] = $dossier->date;
      $row[] = $dossier->description_dossier;
@@ -90,6 +90,7 @@ class Dossier extends CI_Controller {
    //output to json format
    echo json_encode($output);
  }
+ 
 
  public function ajax_edit($id)
  {
@@ -113,7 +114,7 @@ public function success(){
        'id_client' => $this->input->post('id_client'),
        'id_categorie' => $this->input->post('id_categorie'),
        'numero_dossier' => $this->generate_num_dossier($this->input->post('id_client')),
-       'libelle_dossier' => $this->input->post('libelle_dossier'),
+       'status_dossier' => $this->input->post('status_dossier'),
        'montant_traitement' => $this->input->post('montant_traitement'),
        'date' => date("Y-m-d H:i:s"),
        'description_dossier' => $this->input->post('description_dossier')

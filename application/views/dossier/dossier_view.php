@@ -21,7 +21,7 @@ Liste des dossiers &nbsp;
                     <th>Client </th>
                     <th>Categorie</th>
                     <th>Numero</th>
-                    <th>Libelle</th>
+                    <th>Status</th>
                     <th>Montant (Euro)</th>
                     <th>Date démarrage</th>
                     <th>Description</th>
