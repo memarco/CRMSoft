@@ -169,6 +169,111 @@ require_once(APPPATH . "views/templates/header.php");
 
               </div>
             </div>
+      
+      <script type="text/javascript">
+
+var save_method; //for save method string
+var table;
+
+$(document).ready(function() {
+
+    //datatables
+    table = $('#table').DataTable({
+
+        "processing": true, //Feature control the processing indicator.
+        "serverSide": true, //Feature control DataTables' server-side processing mode.
+        "order": [], //Initial no order.
+
+        // Load data for the table's content from an Ajax source
+        "ajax": {
+            "url": "<?php echo site_url('depense/ajax_list')?>",
+            "type": "POST"
+        },
+
+        //Set column definition initialisation properties.
+        "columnDefs": [
+        {
+            "targets": [ -1 ], //last column
+            "orderable": false, //set not orderable
+        },
+        ],
+
+    });
+
+    //datepicker
+    $('.datepicker').datepicker({
+        autoclose: true,
+        format: "yyyy-mm-dd",
+        todayHighlight: true,
+        orientation: "top auto",
+        todayBtn: true,
+        todayHighlight: true,
+    });
+
+});
+
+function reload_table()
+{
+    table.ajax.reload(null,false); //reload datatable ajax
+}
+
+
+function bind_type_depense()
+{
+    //Ajax Load data from ajax
+    $.ajax({
+        url : "<?php echo site_url('type_depense/get_data')?>",
+        type: "GET",
+        dataType: "JSON",
+        success: function(data)
+        {
+          var items = "";
+           items += "<option value='' disabled selected>- Choisir -</option>";
+           $.each(data, function (i, item) {
+                 items += "<option value='" + item.id + "'>" + (item.libelle_type_depense) + "</option>";
+           });
+           $("#s_type_depense").html(items);
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            alert('Error get data from ajax');
+        }
+    });
+}
+
+function bind_dossier()
+{
+    //Ajax Load data from ajax
+    $.ajax({
+        url : "<?php echo site_url('dossier/get_data')?>",
+        type: "GET",
+        dataType: "JSON",
+        success: function(data)
+        {
+          var items = "";
+           items += "<option value='' disabled selected>- Choisir -</option>";
+           $.each(data, function (i, item) {
+                 items += "<option value='" + item.id + "'>" + (item.libelle_dossier) + "</option>";
+           });
+           $("#s_dossier").html(items);
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            alert('Error get data from ajax');
+        }
+    });
+}
+
+$(document).ready(function() {
+ bind_type_depense();
+ bind_dossier();
+});
+
+</script>
 
 <!-- Modal pour le formulaire -->
 

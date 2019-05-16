@@ -32,7 +32,7 @@ class Payement extends CI_Controller {
 
      $no++;
      $row = array();
-     $row[] = $payement->status_dossier;
+     $row[] = $payement->numero_dossier;
      $row[] = $payement->type_payement_libelle;
      $row[] = $payement->libelle_payement;
      $row[] = $payement->montant_payement;
@@ -63,13 +63,13 @@ class Payement extends CI_Controller {
    echo json_encode($data);
  }
 
-public function generate_num_dossier($id){
-  $time =  strtotime(date("Y-m-d H:i:s"));
-  $client = $this->client->get_by_id($id);
-  $nom = strtoupper($client->nom_client);
-  $prenom =  strtoupper($client->prenom_client);
-  return  substr($nom, 0, 1).substr($prenom,0,1).$time;
-}
+//public function generate_num_dossier($id){
+//  $time =  strtotime(date("Y-m-d H:i:s"));
+//  $client = $this->client->get_by_id($id);
+//  $nom = strtoupper($client->nom_client);
+//  $prenom =  strtoupper($client->prenom_client);
+//  return  substr($nom, 0, 1).substr($prenom,0,1).$time;
+//}
 public function success(){
   $this->load->view('payement/success');
 }

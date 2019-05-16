@@ -133,7 +133,7 @@ $(document).ready(function() {
     	$(row).find('td:eq(3)').css('color', 'blue');
             }
         if(data[3] == "En attente"){
-    	$(row).find('td:eq(3)').css('color', 'yellow');
+    	$(row).find('td:eq(3)').css('color', 'red');
             }
         if(data[7] < 0){
                 $(row).find('td:eq(7)').css('color', 'red');

@@ -107,7 +107,7 @@ function bind_dossier()
           var items = "";
            items += "<option value='' disabled selected>- Choisir -</option>";
            $.each(data, function (i, item) {
-                 items += "<option value='" + item.id + "'>" + (item.libelle_dossier) + "</option>";
+                 items += "<option value='" + item.id + "'>" + (item.numero_dossier) + "</option>";
            });
            $("#s_dossier").html(items);
 

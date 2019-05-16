@@ -10,6 +10,7 @@
                <li id="menu-academico-avaliacoes" ><a href="<?php echo base_url(); ?>index.php/dossier">Gestion</a></li>
 <!--                 <li id="menu-academico-avaliacoes" ><a href="<?php echo base_url(); ?>index.php/dossier/suivi">Suivi</a></li> -->
                <li id="menu-academico-avaliacoes" ><a href="<?php echo base_url(); ?>index.php/suivi_dossier">Suivi</a></li>
+               <li id="menu-academico-avaliacoes" ><a href="<?php echo base_url(); ?>index.php/detail_suivi">Details</a></li>
              </ul>
          </li>
         <li id="menu-academico" ><a href="<?php echo base_url(); ?>index.php/payement"><i class="fa fa-money"></i><span>Paiments</span></a></li>
