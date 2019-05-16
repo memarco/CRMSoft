@@ -48,13 +48,13 @@ require_once(APPPATH . "views/templates/header.php");
 <div class="col-lg-12" style="font-size:10; padding:25px">
 
           <div class="col-lg-6"  style="text-align:left;margin-top:10px">
-              <span style="font-weight:bold;">Dossier :</span> <span id='snum'></span>
+              <span style="font-weight:bold;">Dossier :</span> <span id='snum'></span></span>
           </div>
           <div class="col-lg-6"  style="text-align:left; margin-top:10px">
              <span style="font-weight:bold">Statut du dossier :</span> <span id='sstatut'></span>
           </div>
           <div class="col-lg-6" style="text-align:left; margin-top:10px">
-              <span style="font-weight:bold">Client :</span> <span id='snomclient'></span>
+              <span style="font-weight:bold">Client :</span> <span id='snomclient'></span> - <span id='sprenomclient'></span>
           </div>
           <div class="col-lg-3" style="text-align:left; margin-top:10px">
               <span style="font-weight:bold">Montant cotation :</span> <span id='smontant'></span>
@@ -104,17 +104,20 @@ require_once(APPPATH . "views/templates/header.php");
                                 var status = response[0].status_dossier;
                                 var montant = response[0].montant_traitement;
                                 var nomcli = response[0].nom_client;
+                                var prenomcli = response[0].prenom_client;
                                 
                                 $('#snum').text(num);
                                 $('#sstatut').text(status);
                                 $('#smontant').text(montant);
                                 $('#snomclient').text(nomcli);
+                                $('#sprenomclient').text(prenomcli);
                                
                             }else{
                                 $('#snum').text('');
                                 $('#sstatut').text('');
                                 $('#smontant').text('');
                                 $('#snomclient').text('');
+                                $('#sprenomclient').text('');
                             }
                            
                         }
