@@ -22,15 +22,19 @@ public function __construct()
     if($postData['numero_dossier'] ){
  
       // Select record
-      $this->db->select('*');
+        $this->db->from('dossiers as d');
+        $this->db->join('clients as cli', 'cli.id = d.id_client','left');
+        
+      //$this->db->select('*');
       $this->db->where('numero_dossier', $postData['numero_dossier']);
-      
-      $q = $this->db->get('dossiers');
-      $response = $q->result_array();
+      //$q = $this->db->get('dossiers');
+      $query = $this->db->get();
+      return $query->result();
+      //$response = $q->result_array();
  
     }
  
-    return $response;
+    //return $response;
   }
 
 }
