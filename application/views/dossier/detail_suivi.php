@@ -45,7 +45,7 @@ require_once(APPPATH . "views/templates/header.php");
           </div>
         </div>
               <div class="col-lg-12" >
-                <div class="col-lg-6" style="border: solid 1px red; padding 10px;">
+                <div class="col-lg-6" style="border: solid 1px red; padding: 10px;">
                   <div class="col-lg-12" style=" border-bottom: solid 1px green; margin-top: 10px;padding-bottom:10px;">
                                                         <div class="col-lg-7 col-md-6">
                                                                             PAIEMENTS &nbsp; <button class="btn btn-success">Nouveau paiement &nbsp;<i class="fa fa-plus"></i></button>

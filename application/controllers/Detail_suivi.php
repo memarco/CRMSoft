@@ -7,18 +7,23 @@ public function __construct()
  {
    parent::__construct();
    
-   $this->load->model('detail_suivi_model');
+   $this->load->model('detail_suivi_model','detail_suivi');
  }
  
  
  public function index()
  {
-    
+  //$data['groups'] = $this->detail_suivi->getUserDetails($postData);
   $this->load->helper('url');
   $this->load->view('detail_suivi/detail_suivi_view');
  }
  
- 
+// public function get_data()
+//  {
+//      echo json_encode($this->detail_suivi->get_all());
+//  }
+  
+  
  public function userDetails(){
   // POST data
   $postData = $this->input->post();
@@ -31,19 +36,49 @@ public function __construct()
 
   echo json_encode($data);
  }
-
  
+  public function ajax_getkotas() {
+    //$kotas = $this->detail_suivi_model->get_kota($id_dossier);
+    $list = $this->detail_suivi->get_kota();
+    //$data = array();
+    foreach ($list as $detail_suivi) {
+       echo '<tr>\n';
+           echo '<td>' . $detail_suivi->date . '</td><td>' . $detail_suivi->montant_payement . '</td><td>' . $detail_suivi->commentaire_payement . '</td>\n';
+       echo '</tr>\n';
+       
+       //$data[] = $row;
+  }
+  
+    }
  
- 
-// public function index()
+//public function ajax_list_suivi()
 // {
-//   $data['groups'] = $this->detail_suivi_model->getUserDetails();
-//   $this->load->helper('url');
-//   $this->load->view('detail_suivi/detail_suivi_view');
+//   $list = $this->detail_suivi->get_detail_suivi_datatables();
+//   $data = array();
+//   $no = $_POST['start'];
+//   foreach ($list as $detail_suivi) {
+//     $no++;
+//     $row = array();
+//     $row[] = $detail_suivi->date;
+//     $row[] ='<div style="text-align:center; font-weight:bold; width:100%">'.$detail_suivi->montant_payement.'</div>';
+//     $row[] = $detail_suivi->commentaire_payement;
+//      
+//   $data[] = $row;
+//   }
+//
+//   $output = array(
+//           "draw" => $_POST['draw'],
+//           "recordsTotal" => $this->detail_suivi->count_all(),
+//           "recordsFiltered" => $this->detail_suivi->count_filtered(),
+//           "data" => $data,
+//       );
+//   //output to json format
+//   echo json_encode($output);
 // }
-
+//  
+}
+ 
 
  
  
-
-}  
+ 
