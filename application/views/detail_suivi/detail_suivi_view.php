@@ -199,12 +199,13 @@ require_once(APPPATH . "views/templates/header.php");
                         }
                     });
                 });
-  $('#sel_user').change(function(){
-  
+  $('#sel_user').on('change',function(){
+  var numero_dossier = $(this).val();
   $.ajax({
-        type: 'GET',
-        url: "<?php echo site_url('Detail_suivi/ajax_getkotas') ?>/" + $('#sel_user').val(), // we call our new function with the selected id
-        
+        //type: 'GET',
+        url: "<?php echo site_url('Detail_suivi/ajax_getkotas') ?>", // we call our new function with the selected id
+        method: 'post',
+         data: {numero_dossier: numero_dossier},       
         success: function (data) { // change the data from our response
             $('#table tbody').html(data); //rows are printed inside the tbody of our table
         },

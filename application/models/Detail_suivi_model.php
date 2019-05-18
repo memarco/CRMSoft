@@ -21,7 +21,7 @@ public function __construct()
 
    function getUserDetails($postData){
  
-    $response = array();
+    //$response = array();
  
     if($postData['numero_dossier'] ){
  
@@ -44,13 +44,20 @@ public function __construct()
 
   
   
- function get_kota() {
+ function get_kota($postData) {
+     
+ 
+     if($postData['numero_dossier'] ){
+         
       $this->db->from('dossiers as d');
       $this->db->join('payements as pay','pay.id_dossier = d.id','left');
-    //$this->db->where('id_payement', $id_payement);
+      
+    $this->db->where('numero_dossier', $postData['numero_dossier']);
     $query = $this->db->get();
     return $query->result();
-}
+ }
+ 
+}  
   
   
   

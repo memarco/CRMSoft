@@ -39,7 +39,10 @@ public function __construct()
  
   public function ajax_getkotas() {
     //$kotas = $this->detail_suivi_model->get_kota($id_dossier);
-    $list = $this->detail_suivi->get_kota();
+    $postData = $this->input->post(); 
+    
+    $list = $this->detail_suivi->get_kota($postData);
+    
     //$data = array();
     foreach ($list as $detail_suivi) {
        echo '<tr>\n';
