@@ -7,7 +7,7 @@ class Detail_suivi_model extends CI_Model {
 // var $column_order = array('d.numero_dossier','cli.nom_client','ca.libelle_categorie','d.status_dossier','d.montant_traitement','dp.montant_depense'); //set column field database for datatable orderable
 // var $column_search = array('nom_client','status_dossier'); //set column field database for datatable searchable just firstname , lastname , address are searchable
 // var $order = array('d.id' => 'desc');
-//    
+//
 public function __construct()
 {
     parent::__construct();
@@ -19,57 +19,81 @@ public function __construct()
 //    return $query->row_array();
 //}
 
-   function getUserDetails($postData){
- 
+   function getDossierPayment($postData){
+
     //$response = array();
- 
+
     if($postData['numero_dossier'] ){
- 
+
       // Select record
-        $this->db->from('dossiers as d');
-        $this->db->join('clients as cli', 'cli.id = d.id_client','left');
-        $this->db->join('depenses as dp', 'dp.id_dossier = d.id','left');
-        
-      //$this->db->select('*');
+
+        $this->db->select('*');
+        $this->db->from('payements as p');
+        $this->db->join('dossiers as d', 'p.id_dossier = d.id','left');
+        $this->db->join('clients as cl', 'd.id_client = cl.id','left');
+
       $this->db->where('numero_dossier', $postData['numero_dossier']);
       //$q = $this->db->get('dossiers');
       $query = $this->db->get();
       return $query->result();
       //$response = $q->result_array();
- 
+
     }
- 
+
     //return $response;
   }
 
-  
-  
+
+     function getDossierDepense($postData){
+
+      //$response = array();
+
+      if($postData['numero_dossier'] ){
+        // Select record
+
+          $this->db->select('*');
+          $this->db->from('depenses as p');
+          $this->db->join('dossiers as d', 'p.id_dossier = d.id','left');
+          $this->db->join('clients as cl', 'd.id_client = cl.id','left');
+
+        $this->db->where('numero_dossier', $postData['numero_dossier']);
+        //$q = $this->db->get('dossiers');
+        $query = $this->db->get();
+        return $query->result();
+        //$response = $q->result_array();
+
+      }
+
+      //return $response;
+    }
+
+
  function get_kota($postData) {
-     
- 
+
+
      if($postData['numero_dossier'] ){
-         
+
       $this->db->from('dossiers as d');
       $this->db->join('payements as pay','pay.id_dossier = d.id','left');
-      
+
     $this->db->where('numero_dossier', $postData['numero_dossier']);
     $query = $this->db->get();
     return $query->result();
  }
- 
-}  
-  
-  
-  
-  
+
+}
+
+
+
+
 // private function _get_detail_suivi_datatables()
 // {
 //
 //   $this->db->from('dossiers as d');
 //   //$this->db->join('depenses as dp', 'dp.id_dossier = d.id','left');
 //   $this->db->join('payements as pay','pay.id_dossier = d.id','left');
-//   
-//   
+//
+//
 //
 //   $i = 0;
 //
@@ -104,8 +128,8 @@ public function __construct()
 //     $this->db->order_by(key($order), $order[key($order)]);
 //   }
 // }
-// 
-// 
+//
+//
 // public function get_all()
 // {
 //   if($_POST['length'] != -1)
@@ -115,14 +139,14 @@ public function __construct()
 //
 //   return $query->result();
 // }
-// 
+//
 // function get_detail_suivi_datatables()
 // {
-//   $this->_get_detail_suivi_datatables();  
+//   $this->_get_detail_suivi_datatables();
 //   $query = $this->db->get();
 //   return $query->result();
 // }
-// 
+//
 //function count_filtered()
 // {
 //   $this->_get_detail_suivi_datatables();
@@ -138,7 +162,3 @@ public function __construct()
 
 
 }
-  
-
-
- 

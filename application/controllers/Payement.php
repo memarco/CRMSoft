@@ -36,7 +36,7 @@ class Payement extends CI_Controller {
      $row[] = $payement->type_payement_libelle;
      $row[] = $payement->libelle_payement;
      $row[] = $payement->montant_payement;
-     $row[] = $payement->date;
+     $row[] = $payement->date_payement;
      $row[] = $payement->commentaire_payement;
 
      //add html for action
@@ -81,7 +81,7 @@ public function success(){
 //       'numero_dossier' => $this->generate_num_dossier($this->input->post('id_client')),
        'libelle_payement' => $this->input->post('libelle_payement'),
        'montant_payement' => $this->input->post('montant_payement'),
-       'date' => date("Y-m-d H:i:s"),
+       'date_payement' => date("Y-m-d H:i:s"),
        'commentaire_payement' => $this->input->post('commentaire_payement')
      );
   $insert = $this->payement->save($data);
@@ -96,7 +96,7 @@ public function success(){
 //       'numero_dossier' => $this->generate_num_dossier($this->input->post('id_client')),
        'libelle_payement' => $this->input->post('libelle_payement'),
        'montant_payement' => $this->input->post('montant_payement'),
-       'date' => date("Y-m-d H:i:s"),
+       'date_payement' => date("Y-m-d H:i:s"),
        'commentaire_payement' => $this->input->post('commentaire_payement')
      );
    $this->payement->update(array('id' => $this->input->post('id')), $data);

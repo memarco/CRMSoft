@@ -21,34 +21,19 @@ require_once(APPPATH . "views/templates/header.php");
                              <div class="form-group">
                                  <label class="control-label col-md-3">N°Dossier</label>
                                    <div class="col-md-9">
-                                     <select id='sel_user'>
-                                        <option>---</option>
-                                        <option value='LF1556860926'>LF1556860926</option>
-                                        <option value='GL1556874924'>GL1556874924</option>
-                                        <option value='GL1557829206'>GL1557829206</option>
-                                      </select>
-                            
-                                        <span class="help-block"></span>
+                                     <select class="form-control" id="s_dossier" name="id_dossier">
+                                     </select>
+                                     <span class="help-block"></span>
                                         </div>
                                     </div>
                                 </div>
 
                             </div>
 
-<!doctype html>
-
-        
-<!--            <select class="form-control">
-            //<?php 
-//
-//            foreach($groups as $row)
-//            { 
-//              echo '<option value="'.$row->username.'">'.$row->username.'</option>';
-//            }
-//            ?>
-            </select>-->
 
 
+
+<div class="col-lg-12" id="block-detail-suivi" style="visibility:hidden">
 <div class="col-lg-12" style="font-size:10; padding:25px">
 
           <div class="col-lg-6"  style="text-align:left;margin-top:10px">
@@ -58,28 +43,29 @@ require_once(APPPATH . "views/templates/header.php");
              <span style="font-weight:bold">Statut du dossier :</span> <span id='sstatut'></span>
           </div>
           <div class="col-lg-6" style="text-align:left; margin-top:10px">
-              <span style="font-weight:bold">Client :</span> <span id='snomclient'></span> - <span id='sprenomclient'></span>
+              <span style="font-weight:bold">Client :</span>  <span id='sprenomclient'></span>&nbsp;<span id='snomclient'></span>
           </div>
           <div class="col-lg-3" style="text-align:left; margin-top:10px">
               <span style="font-weight:bold">Montant cotation :</span> <span id='smontant'></span>
           </div>
           <div class="col-lg-3" style="text-align:right; margin-top:10px">
-              <span style="font-weight:bold">Marge :</span> <span  class="label-success" style="color:white">&nbsp; 3 500 &nbsp;</span>
+              <span style="font-weight:bold">Marge (€):</span> <span  class="label-success" style="color:white" id="contain-marge">&nbsp; <span id="marge-dossier"></span> &nbsp;</span>
           </div>
         </div>
 
  <div class="col-lg-12" >
-                <div class="col-lg-6" style="border: solid 1px red; padding: 10px;">
+                <div class="col-lg-6" style=" padding: 10px;">
                   <div class="col-lg-12" style=" border-bottom: solid 1px green; margin-top: 10px;padding-bottom:10px;">
                                                         <div class="col-lg-7 col-md-6">
                                                                             PAIEMENTS &nbsp; <a class="btn btn-success" href="<?php echo base_url(); ?>index.php/payement/open" >Nouveau paiement &nbsp;<i class="fa fa-plus"></i></a>
                                                         </div>
                                                           <div class="col-lg-5 col-md-6 text-right">
-                                                             Total (€) : <span class="chit-chat-heading">4280</span>
+                                                             Total (€) : <span class="chit-chat-heading" id="total_payement"></span>
                                                         </div>
                               </div>
                               <div class="col-lg-12 table-responsive">
-                                  <table id="table" class="table table-hover">
+                                <br/>
+                                  <table id="table_payment" class="table table-striped table-bordered">
                                     <thead>
                                       <tr>
                                          <th>Date</th>
@@ -89,12 +75,12 @@ require_once(APPPATH . "views/templates/header.php");
                                     </tr>
                                 </thead>
                                 <tbody>
-                                   <tr><td>selectionnez le numero du Document dans la liste déroulante ci-haut</td></tr>
+
                                </tbody>
                              </table></div>
                 </div>
 
-                    <div class="col-lg-6" style="border: solid 1px red; padding: 10px; ">
+                    <div class="col-lg-6" style=" padding: 10px; ">
                       <div class="col-lg-12" style=" border-bottom: solid 1px red; margin-top: 10px; padding-bottom:10px;">
                                         <div class="col-lg-7">
                                           DEPENSES  &nbsp; <button class="btn btn-danger">Nouvelle dépense &nbsp;<i class="fa fa-plus"></i></button>
@@ -104,51 +90,25 @@ require_once(APPPATH . "views/templates/header.php");
                                         </div>
                                   </div>
                                   <div class="col-lg-12 table-responsive">
-                                      <table class="table table-hover">
+                                      <br/>
+                                    <table id="table_depense" class="table table-striped table-bordered">
                                         <thead>
                                           <tr>
-                                            <th>#</th>
                                             <th>Date</th>
                                             <th class="text-center">Montant (€)</th>
-                                            <th class="text-center">Type de dépense</th>
+                                          <!--  <th class="text-center">Type de dépense</th> -->
                                             <th class="text-center">Commentaires</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                      <tr>
-                                        <td>1</td>
-                                        <td>06/05/2019</td>
-                                        <td class="text-center"><span style="font-weight: bold;">1500</span></td>
-                                        <td class="text-center">PAYPAL</td>
-                                        <td class="text-center">
-                                              <i class="fa fa-comment" title="Avance frais de Transport"></i>
-                                          </td>
-                                     </tr>
-                                       <tr>
-                                         <td>1</td>
-                                         <td>06/05/2019</td>
-                                         <td class="text-center"><span style="font-weight: bold;">1500</span></td>
-                                         <td class="text-center">PAYPAL</td>
-                                         <td class="text-center">
-                                               <i class="fa fa-comment" title="Avance frais de Transport"></i>
-                                           </td>
-                                      </tr>
-                                        <tr>
-                                          <td>1</td>
-                                          <td>06/05/2019</td>
-                                          <td class="text-center"><span style="font-weight: bold;">500</span></td>
-                                          <td class="text-center">CASH</td>
-                                          <td class="text-center">
-                                                <i class="fa fa-comment" title="Avance frais de Transport"></i>
-                                            </td>
-                                       </tr>
-                                          
+
+
                                    </tbody>
                                  </table></div>
                     </div>
 
               </div>
- 
+</div>
 </div>
 
 <!-- Script -->
@@ -157,55 +117,133 @@ require_once(APPPATH . "views/templates/header.php");
         <!-- Load Exteral script file (Remove the comment if you want send AJAX request from external script file ) -->
         <!--<script src='<?php echo base_url(); ?>script/script.js' type='text/javascript' ></script>-->
         <script type='text/javascript'>
+        function bind_dossier()
+        {
+            //Ajax Load data from ajax
+            $.ajax({
+                url : "<?php echo site_url('dossier/get_data')?>",
+                type: "GET",
+                dataType: "JSON",
+                success: function(data)
+                {
+                  var items = "";
+                   items += "<option value='' disabled selected>- Choisir -</option>";
+                   $.each(data, function (i, item) {
+                         items += "<option value='" + item.numero_dossier + "'>" + (item.numero_dossier) + "</option>";
+                   });
+                   $("#s_dossier").html(items);
+
+
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    alert('Error get data from ajax');
+                }
+            });
+        }
+
             // baseURL variable
             var baseURL= "<?php echo base_url();?>";
-            
             $(document).ready(function(){
-                
+              bind_dossier();
                 // Comment or remove the below change event code if you want send AJAX request from external script file
-                $('#sel_user').change(function(){
+                $('#s_dossier').change(function(){
                     var numero_dossier = $(this).val();
+                    document.getElementById('block-detail-suivi').style='visibility:block';
                     $.ajax({
-                        url:'<?=base_url()?>index.php/Detail_suivi/userDetails',
+                        url:'<?=base_url()?>index.php/Detail_suivi/getDossierPayment',
                         method: 'post',
                         data: {numero_dossier: numero_dossier},
                         dataType: 'json',
                         success: function(response){
-                    
-                            var len = response.length;
 
+                              var num =  response.data_client.numero_dossier;
+                              var status = response.data_client.status_dossier;
+                              var montant = response.data_client.montant_traitement;
+                              var nomcli = response.data_client.nom_client;
+                              var prenomcli = response.data_client.prenom_client;
+                              var marge = response.data_marge.marge;
+
+                              $('#snum').text(num+" "+response.data_client.libelle_dossier);
+                              $('#sstatut').text(status);
+                              $('#smontant').text(montant);
+                              $('#snomclient').text(nomcli);
+                              $('#sprenomclient').text(prenomcli);
+                              $('#total_payement').text(parseFloat(montant)-parseFloat(marge));
+
+                              if(marge<0){
+                                document.getElementById('contain-marge').style ="background-color:red; color:white";
+                              }else{
+                                document.getElementById('contain-marge').style ="background-color:green; color:white";
+                              }
+
+                              $('#marge-dossier').text(marge);
+
+                            var len = response.data_paiement.length;
+                            var len_d = response.data_depense.length;
                             if(len > 0){
                                 // Read values
-                                var num = response[0].numero_dossier;
-                                var status = response[0].status_dossier;
-                                var montant = response[0].montant_traitement;
-                                var nomcli = response[0].nom_client;
-                                var prenomcli = response[0].prenom_client;
-                                
-                                $('#snum').text(num);
-                                $('#sstatut').text(status);
-                                $('#smontant').text(montant);
-                                $('#snomclient').text(nomcli);
-                                $('#sprenomclient').text(prenomcli);
-                               
+                              $('#table_payment').DataTable().clear().destroy();
+                                /*  var list_payments = "";
+                                for(i=0;i<len;i++){
+                                   list_payments += "<tr><td>"+response[i].date+"</td><td style='text-align:center'>"+response[i].montant_payement+"</td><td>"+response[i].commentaire_payement+"</td></tr>";
+                                 }*/
+
+                                $("#table_payment").DataTable({
+                                "data": response.data_paiement,
+                                "columns": [
+                                  { data: 'date_payement' },
+                                  { data: 'montant_payement' }, //or { data: 'MONTH', title: 'Month' }`
+                                  { data: 'commentaire_payement' }
+                                ]
+                              });
+
                             }else{
-                                $('#snum').text('');
-                                $('#sstatut').text('');
-                                $('#smontant').text('');
-                                $('#snomclient').text('');
-                                $('#sprenomclient').text('');
+                                  $('#table_payment tbody').html("<tr><td>Aucun paiement effectué.</td></tr>");
                             }
-                          
+
+                            if(len_d > 0){
+                                // Read values
+                                /*  var list_payments = "";
+                                for(i=0;i<len;i++){
+                                   list_payments += "<tr><td>"+response[i].date+"</td><td style='text-align:center'>"+response[i].montant_payement+"</td><td>"+response[i].commentaire_payement+"</td></tr>";
+                                 }*/
+                                 if (  $.fn.DataTable.isDataTable( '#table_depense' ) ) {
+                               $('#table_depense').DataTable().clear().destroy();
+                               $("#table_depense").DataTable({
+                               "data": response.data_depense,
+                               "columns": [
+                                 { data: 'date_depense' },
+                                 { data: 'montant_depense' }, //or { data: 'MONTH', title: 'Month' }`
+                                 { data: 'commentaire_depense' }
+                               ]
+                             });
+                                 }else{
+                                   $("#table_depense").DataTable({
+                                   "data": response.data_depense,
+                                   "columns": [
+                                     { data: 'date_depense' },
+                                     { data: 'montant_depense' }, //or { data: 'MONTH', title: 'Month' }`
+                                     { data: 'commentaire_depense' }
+                                   ]
+                                 });
+                                 }
+
+
+                            }else{
+                                  $('#table_depense tbody').html("<tr><td>Aucune dépense effectuée.</td></tr>");
+                            }
+
                         }
                     });
                 });
-  $('#sel_user').on('change',function(){
+/*  $('#s_dossier').on('change',function(){
   var numero_dossier = $(this).val();
   $.ajax({
         //type: 'GET',
         url: "<?php echo site_url('Detail_suivi/ajax_getkotas') ?>", // we call our new function with the selected id
         method: 'post',
-         data: {numero_dossier: numero_dossier},       
+         data: {numero_dossier: numero_dossier},
         success: function (data) { // change the data from our response
             $('#table tbody').html(data); //rows are printed inside the tbody of our table
         },
@@ -213,7 +251,7 @@ require_once(APPPATH . "views/templates/header.php");
     })
 
 //table = $('#table').DataTable({
-//     
+//
 //        "processing": true, //Feature control the processing indicator.
 //        "serverSide": true, //Feature control DataTables' server-side processing mode.
 //        "order": [],
@@ -231,7 +269,7 @@ require_once(APPPATH . "views/templates/header.php");
 //        ],
 //
 //    })
-})
+})*/
             });
         </script>
     </body>

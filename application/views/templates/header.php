@@ -17,12 +17,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- Custom Theme files -->
 <link href="<?php echo base_url('vendor/css/style.css') ?>" rel="stylesheet" type="text/css" media="all"/>
 <!--js-->
-<script src="<?php echo base_url('vendor/js/jquery-2.1.1.min.js') ?>"></script>
+<!-- <script src="<?php echo base_url('vendor/js/jquery-2.1.1.min.js') ?>"></script> -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 <!--icons-css-->
 <link href="<?php echo base_url('vendor/css/font-awesome.css') ?>" rel="stylesheet">
 <!--DataTables-->
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+<link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+<link href='https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css' rel='stylesheet' type='text/css'>
+
+
 <!--Google Fonts-->
 <link href='//fonts.googleapis.com/css?family=Carrois+Gothic' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Work+Sans:400,500,600' rel='stylesheet' type='text/css'>

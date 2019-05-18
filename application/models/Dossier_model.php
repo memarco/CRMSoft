@@ -54,7 +54,7 @@ class Dossier_model extends CI_Model {
      $this->db->order_by(key($order), $order[key($order)]);
    }
  }
- 
+
  public function get_all()
  {
    $this->db->from($this->table);
@@ -70,8 +70,8 @@ class Dossier_model extends CI_Model {
    $query = $this->db->get();
    return $query->result();
  }
- 
- 
+
+
  function count_filtered()
  {
    $this->_get_datatables_query();
@@ -94,6 +94,28 @@ class Dossier_model extends CI_Model {
    return $query->row();
  }
 
+ public function get_marge_by_id($id)
+ {
+  $query = $this->db->query("SELECT numero_dossier, montant_traitement - sum(montant_payement) as marge,montant_traitement, sum(montant_payement)  as total_payement
+                    FROM dossiers d
+                    LEFT JOIN `payements` p ON p.id_dossier = d.id
+                    WHERE numero_dossier = '$id'
+                    GROUP BY numero_dossier, montant_traitement");
+
+
+   return $query->row();
+ }
+ public function get_by_id_client($id)
+ {
+
+   $this->db->select('*');
+   $this->db->from($this->table.' as d');
+   $this->db->join('clients as cl', 'd.id_client = cl.id','left');
+   $this->db->where('numero_dossier', $id);
+   $query = $this->db->get();
+
+   return $query->row();
+ }
  public function save($data)
  {
    $this->db->insert($this->table, $data);

@@ -67,15 +67,15 @@ class Dossier extends CI_Controller {
      $row[] = $dossier->numero_dossier;
      $row[] = $dossier->status_dossier;
      $row[] ='<div style="text-align:center; font-weight:bold; width:100%">'.$dossier->montant_traitement.'</div>';
-     $row[] = $dossier->date;
+     $row[] = $dossier->date_creation;
      $row[] = $dossier->description_dossier;
 
      //add html for action
-//     $row[] = '<a href="javascript:void(0);" class="btn btn-info btn-sm editRecord"   title="Edit" onclick="edit_dossier('."'".$dossier->id."'".')">  Paiment</a>
-//        <a href="javascript:void(0);" class="btn btn-danger btn-sm deleteRecord"   title="Hapus" onclick="delete_dossier('."'".$dossier->id."'".')">  Dépense</a>';
+     $row[] = '<a href="javascript:void(0);" class="btn btn-info btn-sm editRecord"   title="Edit" onclick="edit_dossier('."'".$dossier->id."'".')"><i class="fa fa-edit"></i>  </a>
+       <a href="javascript:void(0);" class="btn btn-danger btn-sm deleteRecord"   title="Hapus" onclick="delete_dossier('."'".$dossier->id."'".')"> <i class="fa fa-trash-o"></i> </a>';
 
-      $row[] = '<div style="text-align:center; font-weight:bold; width:100%"><a class="btn btn-info btn-sm editRecord"   title="Edit" href="'.base_url().'index.php/dossier/dep/ ">  <i class="fa fa-edit"></i></a>
-        <a class="btn btn-danger btn-sm deleteRecord"   title="Hapus" href="'.base_url().'index.php/dossier/paye/ ">  <i class="fa fa-trash-o"></i></a></div>';
+    //  $row[] = '<div style="text-align:center; font-weight:bold; width:100%"><a class="btn btn-info btn-sm editRecord"   title="Edit" href="'.base_url().'index.php/dossier/dep/ ">  <i class="fa fa-edit"></i></a>
+      //   <a class="btn btn-danger btn-sm deleteRecord"   title="Hapus" href="'.base_url().'index.php/dossier/paye/ ">  <i class="fa fa-trash-o"></i></a></div>';
 
 
      $data[] = $row;
@@ -90,7 +90,12 @@ class Dossier extends CI_Controller {
    //output to json format
    echo json_encode($output);
  }
- 
+
+public function detail_client($id)
+{
+  $data = $this->dossier->get_by_id_client($id);
+  echo json_encode($data);
+}
 
  public function ajax_edit($id)
  {
@@ -116,7 +121,7 @@ public function success(){
        'numero_dossier' => $this->generate_num_dossier($this->input->post('id_client')),
        'status_dossier' => $this->input->post('status_dossier'),
        'montant_traitement' => $this->input->post('montant_traitement'),
-       'date' => date("Y-m-d H:i:s"),
+       'date_creation' => date("Y-m-d H:i:s"),
        'description_dossier' => $this->input->post('description_dossier')
      );
   $insert = $this->dossier->save($data);

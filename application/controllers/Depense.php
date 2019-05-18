@@ -15,8 +15,8 @@ class Depense extends CI_Controller {
    $this->load->helper('url');
    $this->load->view('depense/depense_view');
  }
- 
- 
+
+
  public function get_data()
   {
       echo json_encode($this->depense->get_all());
@@ -42,7 +42,7 @@ class Depense extends CI_Controller {
 //     $row[] = $depense->num_depense;
      $row[] = $depense->libelle_depense;
      $row[] = $depense->montant_depense;
-     $row[] = $depense->date;
+     $row[] = $depense->date_depense;
      $row[] = $depense->commentaire_depense;
 
      //add html for action
@@ -87,7 +87,7 @@ public function success(){
 //       'num_depense' => $this->generate_num_dossier($this->input->post('id_client')),
        'libelle_depense' => $this->input->post('libelle_depense'),
        'montant_depense' => $this->input->post('montant_depense'),
-       'date' => date("Y-m-d H:i:s"),
+       'date_depense' => date("Y-m-d H:i:s"),
        'commentaire_depense' => $this->input->post('commentaire_depense')
      );
   $insert = $this->depense->save($data);
@@ -102,7 +102,7 @@ public function success(){
 //       'num_depense' => $this->generate_num_dossier($this->input->post('id_client')),
        'libelle_depense' => $this->input->post('libelle_depense'),
        'montant_depense' => $this->input->post('montant_depense'),
-       'date' => date("Y-m-d H:i:s"),
+       'date_depense' => date("Y-m-d H:i:s"),
        'commentaire_depense' => $this->input->post('commentaire_depense')
      );
    $this->depense->update(array('id' => $this->input->post('id')), $data);

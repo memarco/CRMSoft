@@ -88,7 +88,7 @@ function add_client()
     $('.modal-title').text('Add Client'); // Set Title to Bootstrap modal title
 }
 
-function edit_client(id)
+function edit_dossier(id)
 {
     save_method = 'update';
     $('#form')[0].reset(); // reset form on modals
@@ -97,7 +97,7 @@ function edit_client(id)
 
     //Ajax Load data from ajax
     $.ajax({
-        url : "<?php echo site_url('client/ajax_edit/')?>/" + id,
+        url : "<?php echo site_url('dossier/ajax_edit/')?>/" + id,
         type: "GET",
         dataType: "JSON",
         success: function(data)
@@ -168,13 +168,13 @@ function save()
     });
 }
 
-function delete_client(id)
+function delete_dossier(id)
 {
     if(confirm('Are you sure delete this data?'))
     {
         // ajax delete data to database
         $.ajax({
-            url : "<?php echo site_url('client/ajax_delete')?>/"+id,
+            url : "<?php echo site_url('dossier/ajax_delete')?>/"+id,
             type: "POST",
             dataType: "JSON",
             success: function(data)
