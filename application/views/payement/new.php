@@ -8,7 +8,7 @@ require_once(APPPATH . "views/templates/header.php");
 
   <div class="chit-chat-layer1">
     <div class="col-md-12">
-  <div class="chit-chat-heading">
+<div class="chit-chat-heading">
 Payement du  dossier &nbsp;
 </div>
         <br/>    <br/>

@@ -96,11 +96,13 @@ class Dossier_model extends CI_Model {
 
  public function get_marge_by_id($id)
  {
-  $query = $this->db->query("SELECT numero_dossier, montant_traitement - sum(montant_payement) as marge,montant_traitement, sum(montant_payement)  as total_payement
+  $query = $this->db->query("SELECT d.id as numero_dossier,COALESCE(SUM(montant_depense), 0) -COALESCE(SUM(montant_payement), 0)  as marge,
+montant_traitement, COALESCE(SUM(montant_payement), 0)  as total_payement, COALESCE(SUM(montant_depense), 0)  as total_depense
                     FROM dossiers d
                     LEFT JOIN `payements` p ON p.id_dossier = d.id
+LEFT JOIN depenses dep ON dep.id_dossier = d.id
                     WHERE numero_dossier = '$id'
-                    GROUP BY numero_dossier, montant_traitement");
+                    GROUP BY d.id, montant_traitement");
 
 
    return $query->row();
