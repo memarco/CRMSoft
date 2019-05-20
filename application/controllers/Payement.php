@@ -34,7 +34,7 @@ class Payement extends CI_Controller {
      $row = array();
      $row[] = $payement->numero_dossier;
      $row[] = $payement->type_payement_libelle;
-     $row[] = $payement->libelle_payement;
+     //$row[] = $payement->libelle_payement;
      $row[] = $payement->montant_payement;
      $row[] = $payement->date_payement;
      $row[] = $payement->commentaire_payement;

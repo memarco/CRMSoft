@@ -11,15 +11,15 @@ require_once(APPPATH . "views/templates/header.php");
                  <div class="work-progres">
                               <div class="chit-chat-heading">
 Liste des dossiers &nbsp;
-
-       <a  class="btn btn-success"  href="<?php echo base_url(); ?>index.php/dossier/open"> Nouveau dossier </a>
+<button class="btn btn-success" onclick="add_dossier()">Ajout Dossier</button>
+<!--       <a  class="btn btn-success"  href="<?php echo base_url(); ?>index.php/dossier/open"> Nouveau dossier </a>-->
         <br/>    <br/>
 </div>
         <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
                     <th>Client </th>
-                    <th>Categorie</th>
+<!--                    <th>Categorie</th>-->
                     <th>Numero</th>
                     <th>Status</th>
                     <th>Montant (Euro)</th>
@@ -76,16 +76,59 @@ $(document).ready(function() {
 
 });
 
+function bind_type_dossier()
+{
+//    //Ajax Load data from ajax
+//    $.ajax({
+//        url : "<-?php echo site_url('categorie/get_data')?>",
+//        type: "GET",
+//        dataType: "JSON",
+//        success: function(data)
+//        {
+//          var items = "";
+//           items += "<option value='' disabled selected>- Choisir -</option>";
+//           $.each(data, function (i, item) {
+//                 items += "<option value='" + item.id + "'>" + (item.libelle_categorie) + "</option>";
+//           });
+//           $("#s_type_dossier").html(items);
+//        },
+//        error: function (jqXHR, textStatus, errorThrown)
+//        {
+//            alert('Error get data from ajax');
+//        }
+//    });
+}
+function bind_client()
+{
+    //Ajax Load data from ajax
+    $.ajax({
+        url : "<?php echo site_url('client/get_data')?>",
+        type: "GET",
+        dataType: "JSON",
+        success: function(data)
+        {
+          var items = "";
+           items += "<option value='' disabled selected>- Choisir -</option>";
+           $.each(data, function (i, item) {
+                 items += "<option value='" + item.id + "'>" + (item.nom_client +" "+item.prenom_client) + "</option>";
+           });
+           $("#s_client").html(items);
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            alert('Error get data from ajax');
+        }
+    });
+}
 
-
-function add_client()
+function add_dossier()
 {
     save_method = 'add';
     $('#form')[0].reset(); // reset form on modals
     $('.form-group').removeClass('has-error'); // clear error class
     $('.help-block').empty(); // clear error string
     $('#modal_form').modal('show'); // show bootstrap modal
-    $('.modal-title').text('Add Client'); // Set Title to Bootstrap modal title
+    $('.modal-title').text('Ajout Dossier'); // Set Title to Bootstrap modal title
 }
 
 function edit_dossier(id)
@@ -102,17 +145,13 @@ function edit_dossier(id)
         dataType: "JSON",
         success: function(data)
         {
-
             $('[name="id"]').val(data.id);
-            $('[name="nom_client"]').val(data.nom_client);
-            $('[name="prenom_client"]').val(data.prenom_client);
-            $('[name="email_client"]').val(data.email_client);
-            $('[name="tel_client"]').val(data.tel_client);
-            $('[name="addresse_client"]').val(data.addresse_client);
-            $('[name="autre_info_client"]').val(data.autre_info_client);;
+            $('[name="id_client"]').val(data.id_client);
+            $('[name="status_dossier"]').val(data.status_dossier);
+            $('[name="montant_traitement"]').val(data.montant_traitement);
+            $('[name="description_dossier"]').val(data.description_dossier);
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
-            $('.modal-title').text('Edit Client'); // Set title to Bootstrap modal title
-
+            $('.modal-title').text('Edit payement'); // Set title to Bootstrap modal title
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
@@ -131,41 +170,57 @@ function save()
     $('#btnSave').text('saving...'); //change button text
     $('#btnSave').attr('disabled',true); //set button disable
     var url;
-
-    if(save_method == 'add') {
-        url = "<?php echo site_url('client/ajax_add')?>";
-    } else {
-        url = "<?php echo site_url('client/ajax_update')?>";
-    }
-
-    // ajax adding data to database
-    $.ajax({
-        url : url,
-        type: "POST",
-        data: $('#form').serialize(),
-        dataType: "JSON",
-        success: function(data)
-        {
-
-            if(data.status) //if success close modal and reload ajax table
-            {
-                $('#modal_form').modal('hide');
-                reload_table();
+        
+//    if(document.getElementById('status_dossier').value == ""){
+//      document.getElementById('h_status_dossier').innerHTML = "Veuillez remplir ce champ S.V.P !";
+//    }
+//    else{
+//        document.getElementById('h_status_dossier').innerHTML = "";
+//    }
+//      if(document.getElementById('montant_traitement').value == "")
+//      {
+//       document.getElementById('h_montant_traitement').innerHTML = "Veuillez remplir ce champ S.V.P !";
+//      }
+//        else{
+//           document.getElementById('h_montant_traitement').innerHTML = "";
+//       }
+//          if(document.getElementById('s_montant_traitement').value == "")
+//        {
+//          document.getElementById('h_montant_traitement').innerHTML = "Veuillez remplir ce champ S.V.P !";
+//        }
+        
+          
+             if(save_method == 'add') {
+             url = "<?php echo site_url('dossier/ajax_add')?>";
+            } else {
+                url = "<?php echo site_url('dossier/ajax_update')?>";
             }
-
-            $('#btnSave').text('save'); //change button text
-            $('#btnSave').attr('disabled',false); //set button enable
-
-
-        },
-        error: function (jqXHR, textStatus, errorThrown)
-        {
-            alert('Error adding / update data');
-            $('#btnSave').text('save'); //change button text
-            $('#btnSave').attr('disabled',false); //set button enable
-
-        }
-    });
+                  // ajax adding data to database
+          $.ajax({
+              url : url,
+              type: "POST",
+              data: $('#form').serialize(),
+              dataType: "JSON",
+              success: function(data)
+              {
+                  if(data.status) //if success close modal and reload ajax table
+                  {
+//                          window.location.href = "<?php echo site_url('dossier/success')?>";
+                    $('#modal_form').modal('hide');
+                                   reload_table();
+                  }
+                  
+                  $('#btnSave').text('save'); //change button text
+                  $('#btnSave').attr('disabled',false); //set button enable
+              },
+              error: function (jqXHR, textStatus, errorThrown)
+              {
+                  alert('Error adding / update data');
+                  $('#btnSave').text('save'); //change button text
+                 $('#btnSave').attr('disabled',false); //set button enable
+              }
+          });
+        
 }
 
 function delete_dossier(id)
@@ -191,6 +246,10 @@ function delete_dossier(id)
 
     }
 }
+$(document).ready(function() {
+ //bind_type_dossier();
+ bind_client();
+});
 
 </script>
 
@@ -200,52 +259,55 @@ function delete_dossier(id)
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h3 class="modal-title">Client Form</h3>
+                <h3 class="modal-title">Dossier Form</h3>
             </div>
             <div class="modal-body form">
                 <form action="#" id="form" class="form-horizontal">
                     <input type="hidden" value="" name="id"/>
                     <div class="form-body">
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Nom </label>
+                        
+<!--                        <div class="form-group">
+                            <label class="control-label col-md-3">Type de dossier</label>
                             <div class="col-md-9">
-                                <input name="nom_client"  class="form-control" type="text">
+                                <select class="form-control" id="s_type_dossier" name="id_categorie">
+                                </select>
+                                <span class="help-block" id="h_type_dossier" style="color:red"></span>
+                            </div>
+                        </div>-->
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Client : </label>
+                            <div class="col-md-9">
+                                <select class="form-control" id="s_client" name="id_client">
+                                </select>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <label class="control-label col-md-3">Status du dossier:</label>
+                            <div class="col-md-9">
+                                <input name="status_dossier"  class="form-control" type="text" id="status_dossier" required>
                                 <span class="help-block"></span>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3">Prenom</label>
+                            <label class="control-label col-md-3">Montant côtation (Euro) :</label>
                             <div class="col-md-9">
-                                <input name="prenom_client"  class="form-control" type="text">
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Email</label>
-                            <div class="col-md-9">
-                                <input name="email_client" class="form-control" type="text">
-                                <span class="help-block"></span>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Tel</label>
-                            <div class="col-md-9">
-                                <input name="tel_client"    class="form-control" type="text">
+                                <input name="montant_traitement"  class="form-control" type="number">
                                 <span class="help-block"></span>
                             </div>
                         </div>
                       <div class="form-group">
-                            <label class="control-label col-md-3">Adresse</label>
+                            <label class="control-label col-md-3">Description :</label>
                             <div class="col-md-9">
-                                <input name="addresse_client"    class="form-control" type="text">
+                                <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="2" name="description_dossier"></textarea>
                                 <span class="help-block"></span>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-3">Autre info</label>
+                       <div class="form-group">
+                            <label class="control-label col-md-3">Ajouter Images :</label>
                             <div class="col-md-9">
-                                <input name="autre_info_client"    class="form-control" type="text">
-                                <span class="help-block"></span>
+                            <input type="file" class="custom-file-input" id="inputGroupFile01" name="image_dossier[]" multiple
+                              aria-describedby="inputGroupFileAddon01" >  <span class="help-block"></span>
                             </div>
                         </div>
 

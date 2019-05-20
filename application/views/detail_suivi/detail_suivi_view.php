@@ -83,7 +83,7 @@ require_once(APPPATH . "views/templates/header.php");
                     <div class="col-lg-6" style=" padding: 10px; ">
                       <div class="col-lg-12" style=" border-bottom: solid 1px red; margin-top: 10px; padding-bottom:10px;">
                                         <div class="col-lg-7">
-                                          DEPENSES  &nbsp; <button class="btn btn-danger">Nouvelle dépense &nbsp;<i class="fa fa-plus"></i></button>
+                                          DEPENSES  &nbsp; <a class="btn btn-success" href="#" onclick="add_depense()" id="btn_save_depense">Nouvelle depense &nbsp;<i class="fa fa-plus"></i></a>
                                         </div>
                                           <div class="col-lg-5 text-right">
                                              Total (€) : <span class="chit-chat-heading" id="total_depense"></span>
@@ -179,6 +179,78 @@ Payement du  dossier &nbsp;
 </div><!-- /.modal-content -->
 </div><!-- /.modal-dialog -->
 </div>
+     
+<!--     Boîte dialogue depense-->
+
+     <div class="modal fade" id="modal_form1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title">Client Form</h3>
+            </div>
+            <div class="modal-body form">
+<div class="chit-chat-heading">
+Depense du  dossier &nbsp;
+</div>
+    <br/>    <br/>
+    <form action="#" id="form1" class="form-horizontal">
+        <input type="hidden" value="" name="id"/>
+        <div class="form-body">
+
+      <div class="form-group">
+          <label class="control-label col-md-3">Dossier</label>
+          <div class="col-md-9">
+              <select class="form-control" id="ps_dossier" name="id_dossier">
+              </select>
+              <span class="help-block"></span>
+          </div>
+      </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Libellé:</label>
+            <div class="col-md-9">
+                <input name="libelle_depense"  class="form-control" type="text">
+                <span class="help-block"></span>
+            </div>
+        </div>
+<!--
+            <div class="form-group">
+                <label class="control-label col-md-3">Type Payement : </label>
+                <div class="col-md-9">
+                    <select class="form-control" id="s_type_payement" name="id_type_payement">
+                    </select>
+                    <span class="help-block"></span>
+                </div>
+            </div>-->
+
+            <div class="form-group">
+                <label class="control-label col-md-3">Montant Depense :</label>
+                <div class="col-md-9">
+                    <input name="montant_depense"    class="form-control" type="number">
+                    <span class="help-block"></span>
+                </div>
+            </div>
+
+          <div class="form-group">
+                <label class="control-label col-md-3">Commentaire :</label>
+                <div class="col-md-9">
+                    <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="2" name="commentaire_depense"></textarea>
+                    <span class="help-block"></span>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" id="btnSave" onclick="save_depense()" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </form>
+  </div>
+</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div>
+     
 </div>
 
 <!-- Script -->
@@ -249,6 +321,47 @@ Payement du  dossier &nbsp;
                 }
             });
         }
+        
+        function add_depense(id_dossier){
+          $('#form')[0].reset(); // reset form on modals
+          $('.form-group').removeClass('has-error'); // clear error class
+          $('.help-block').empty(); // clear error string
+          var items = "";
+           items += "<option value='"+id_dossier+"' selected>"+document.getElementById('s_dossier').value+"</option>";
+                $("#ps_dossier").html(items);
+          //document.getElementById('ps_dossier').value=document.getElementById('s_dossier').value;
+//          bind_type_payement();
+          $('#modal_form1').modal('show'); // show bootstrap modal
+          $('.modal-title').text('Nouvelle depense'); // Set Title to Bootstrap modal title
+        }
+        
+        function save_depense()
+        {
+            // ajax adding data to database
+            $.ajax({
+                url : "<?php echo site_url('depense/ajax_add')?>",
+                type: "POST",
+                data: $('#form1').serialize(),
+                dataType: "JSON",
+                success: function(data)
+                {
+                    if(data.status) //if success close modal and reload ajax table
+                    {
+                        $('#modal_form1').modal('hide');
+                          load_tables(document.getElementById('s_dossier').value);
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    alert('Error adding / update data');
+
+                }
+            });
+        }
+        
+        
+        
+        
         function bind_dossier()
         {
             //Ajax Load data from ajax
@@ -298,6 +411,8 @@ Payement du  dossier &nbsp;
                     $('#total_payement').text(parseFloat(total_payement));
                     $('#total_depense').text(parseFloat(total_depense));
                     document.getElementById('btn_save_payment').setAttribute('onclick','add_payment("'+response.data_marge.numero_dossier+'")');
+                    document.getElementById('btn_save_depense').setAttribute('onclick','add_depense("'+response.data_marge.numero_dossier+'")');
+                    
                     if(marge<0){
                       document.getElementById('contain-marge').style ="background-color:red; color:white";
                     }else{

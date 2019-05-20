@@ -12,7 +12,9 @@ require_once(APPPATH . "views/templates/header.php");
                               <div class="chit-chat-heading">
     Liste des depenses &nbsp;
 
-       <a  class="btn btn-success"  href="<?php echo base_url(); ?>index.php/depense/open"> Nouvelle depense </a>
+<!--       <a  class="btn btn-success"  href="<?php echo base_url(); ?>index.php/depense/open"> Nouvelle depense </a>-->
+    <button class="btn btn-success" onclick="add_depense()">Ajout Depense</button>
+  
         <br/>    <br/>
 </div>
         <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -104,10 +106,10 @@ function edit_depense(id)
 
             $('[name="id"]').val(data.id);
             $('[name="libelle_type_depense"]').val(data.libelle_type_depense);
-            $('[name="libelle_dossier"]').val(data.libelle_dossier);
+            $('[name="numero_dossier"]').val(data.numero_dossier);
             $('[name="libelle_depense"]').val(data.libelle_depense);
             $('[name="montant_depense"]').val(data.montant_depense);
-            $('[name="date"]').val(data.date);
+            $('[name="date_depense"]').val(data.date_depense);
             $('[name="commentaire_depense"]').val(data.commentaire_depense);;
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
             $('.modal-title').text('Edit Depense'); // Set title to Bootstrap modal title
@@ -227,7 +229,7 @@ function bind_dossier()
           var items = "";
            items += "<option value='' disabled selected>- Choisir -</option>";
            $.each(data, function (i, item) {
-                 items += "<option value='" + item.id + "'>" + (item.libelle_dossier) + "</option>";
+                 items += "<option value='" + item.id + "'>" + (item.numero_dossier) + "</option>";
            });
            $("#s_dossier").html(items);
 

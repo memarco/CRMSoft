@@ -12,7 +12,9 @@ require_once(APPPATH . "views/templates/header.php");
                               <div class="chit-chat-heading">
 Liste des payements &nbsp;
 
-       <a  class="btn btn-success"  href="<?php echo base_url(); ?>index.php/payement/open"> Nouveau Payement </a>
+<!--       <a  class="btn btn-success"  href="<?php echo base_url(); ?>index.php/payement/open"> Nouveau Payement </a>-->
+<button class="btn btn-success" onclick="add_payement()">Ajout Payement</button>
+        
         <br/>    <br/>
 </div>
         <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -20,7 +22,7 @@ Liste des payements &nbsp;
                 <tr>
                     <th>Dossier </th>
                     <th>Type Payement</th> 
-                    <th>Libelle</th>
+<!--                    <th>Libelle</th>-->
                     <th>Montant (Euro)</th>
                     <th>Date</th>
                     <th>Commentaire</th>
@@ -75,7 +77,55 @@ $(document).ready(function() {
 
 });
 
+function bind_dossier()
+{
+    //Ajax Load data from ajax
+    $.ajax({
+        url : "<?php echo site_url('dossier/get_data')?>",
+        type: "GET",
+        dataType: "JSON",
+        success: function(data)
+        {
+          var items = "";
+           items += "<option value='' disabled selected>- Choisir -</option>";
+           $.each(data, function (i, item) {
+                 items += "<option value='" + item.id + "'>" + (item.numero_dossier) + "</option>";
+           });
+           $("#s_dossier").html(items);
 
+
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            alert('Error get data from ajax');
+        }
+    });
+}
+
+function bind_type_payement()
+{
+    //Ajax Load data from ajax
+    $.ajax({
+        url : "<?php echo site_url('type_payement/get_data')?>",
+        type: "GET",
+        dataType: "JSON",
+        success: function(data)
+        {
+          var items = "";
+           items += "<option value='' disabled selected>- Choisir -</option>";
+           $.each(data, function (i, item) {
+                 items += "<option value='" + item.id + "'>" + (item.type_payement_libelle) + "</option>";
+           });
+           $("#s_type_payement").html(items);
+
+
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            alert('Error get data from ajax');
+        }
+    });
+}
 
 function add_payement()
 {
@@ -84,7 +134,7 @@ function add_payement()
     $('.form-group').removeClass('has-error'); // clear error class
     $('.help-block').empty(); // clear error string
     $('#modal_form').modal('show'); // show bootstrap modal
-    $('.modal-title').text('Add Payement'); // Set Title to Bootstrap modal title
+    $('.modal-title').text('Ajout Payement'); // Set Title to Bootstrap modal title
 }
 
 function edit_payement(id)
@@ -191,7 +241,72 @@ function delete_payement(id)
 
     }
 }
+$(document).ready(function() {
+ bind_dossier();
+ bind_type_payement();
+});
 
 </script>
 <!--inner block end here-->
+
+<div class="modal fade" id="modal_form" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title">Payement Form</h3>
+            </div>
+            <div class="modal-body form">
+                <form action="#" id="form" class="form-horizontal">
+                    <input type="hidden" value="" name="id"/>
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Dossier</label>
+                            <div class="col-md-9">
+                                <select class="form-control" id="s_dossier" name="id_dossier">
+                                </select>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+<!--                         <div class="form-group">
+                            <label class="control-label col-md-3">Libellé:</label>
+                            <div class="col-md-9">
+                                <input name="libelle_payement"  class="form-control" type="text">
+                                <span class="help-block"></span>
+                            </div>
+                        </div>-->
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Type Payement : </label>
+                            <div class="col-md-9">
+                                <select class="form-control" id="s_type_payement" name="id_type_payement">
+                                </select>
+                                <span class="help-block"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                        <label class="control-label col-md-3">Montant Payement :</label>
+                        <div class="col-md-9">
+                            <input name="montant_payement"    class="form-control" type="number">
+                            <span class="help-block"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                          <label class="control-label col-md-3">Commentaire :</label>
+                          <div class="col-md-9">
+                              <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="2" name="commentaire_payement"></textarea>
+                              <span class="help-block"></span>
+                          </div>
+                      </div>
+                  </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="btnSave" onclick="save()" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 <?php include(APPPATH . "views/templates/footer.php"); ?>
