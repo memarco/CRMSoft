@@ -179,11 +179,11 @@ Payement du  dossier &nbsp;
 </div><!-- /.modal-content -->
 </div><!-- /.modal-dialog -->
 </div>
-     
+
 <!--     Boîte dialogue depense-->
 
-   
-     
+
+
 </div>
 
 <!-- Script -->
@@ -254,7 +254,7 @@ Payement du  dossier &nbsp;
                 }
             });
         }
-        
+
         function add_depense(id_dossier){
           $('#form')[0].reset(); // reset form on modals
           $('.form-group').removeClass('has-error'); // clear error class
@@ -267,7 +267,7 @@ Payement du  dossier &nbsp;
           $('#modal_form1').modal('show'); // show bootstrap modal
           $('.modal-title').text('Nouvelle depense'); // Set Title to Bootstrap modal title
         }
-        
+
         function save_depense()
         {
             // ajax adding data to database
@@ -291,10 +291,10 @@ Payement du  dossier &nbsp;
                 }
             });
         }
-        
-        
-        
-        
+
+
+
+
         function bind_dossier()
         {
             //Ajax Load data from ajax
@@ -333,6 +333,8 @@ Payement du  dossier &nbsp;
                     var nomcli = response.data_client.nom_client;
                     var prenomcli = response.data_client.prenom_client;
                     var marge = response.data_marge.marge;
+
+
                     var total_payement = response.data_marge.total_payement;
                     var total_depense = response.data_marge.total_depense;
 
@@ -345,7 +347,7 @@ Payement du  dossier &nbsp;
                     $('#total_depense').text(parseFloat(total_depense));
                     document.getElementById('btn_save_payment').setAttribute('onclick','add_payment("'+response.data_marge.numero_dossier+'")');
                     document.getElementById('btn_save_depense').setAttribute('onclick','add_depense("'+response.data_marge.numero_dossier+'")');
-                    
+
                     if(marge<0){
                       document.getElementById('contain-marge').style ="background-color:red; color:white";
                     }else{
@@ -459,8 +461,8 @@ Payement du  dossier &nbsp;
 })*/
             });
         </script>
-  
- <div class="chit-chat-layer1"> 
+
+ <div class="chit-chat-layer1">
    <div class="modal fade" id="modal_form1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -529,7 +531,7 @@ Depense du  dossier &nbsp;
 </div><!-- /.modal-content -->
 </div><!-- /.modal-dialog -->
 </div>
- 
+
  </div>
     </body>
 </html>

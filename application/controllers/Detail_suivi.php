@@ -34,15 +34,30 @@ public function __construct()
   // get list paiement
   $data_payement = $this->detail_suivi_model->getDossierPayment($postData);
   $data_client =  $this->dossier_model->get_by_id_client($num_dossier);
-  $marge=  $this->dossier_model->get_marge_by_id($num_dossier);
+
   $data_depense =  $this->detail_suivi_model->getDossierDepense($postData);
+$total_paiement=0;
+$total_depense=0;
+$marge=new StdClass();
+  foreach ($data_payement as $_data_payemeent){
+    //commandes
+    $total_paiement=$total_paiement+$_data_payemeent->montant_payement;
+  }
+  foreach ($data_depense as $_data_depense){
+    //commandes
+    $total_depense=$total_depense+$_data_depense->montant_depense;
+  }
+  $_marge = $total_depense-$total_paiement;
+  $marge->total_payement=$total_paiement;
+  $marge->total_depense=$total_depense;
+  $marge->marge=$_marge;
     $data = array();
  $data = array('data_client' => $data_client, 'data_paiement' => $data_payement,'data_marge'=>$marge,'data_depense'=>$data_depense);
 
   echo json_encode($data);
  }
 
- 
+
 
 
   public function ajax_getkotas() {
