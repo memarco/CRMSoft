@@ -155,8 +155,8 @@ function edit_payement(id)
             $('[name="id"]').val(data.id);
             $('[name="id_dossier"]').val(data.id_dossier);
             $('[name="id_type_payement"]').val(data.id_type_payement);
-            $('[name="numero_payement"]').val(data.numero_payement);
-            $('[name="libelle_payement"]').val(data.libelle_payement);
+            //$('[name="numero_payement"]').val(data.numero_payement);
+            //$('[name="libelle_payement"]').val(data.libelle_payement);
             $('[name="montant_payement"]').val(data.montant_payement);
             $('[name="commentaire_payement"]').val(data.commentaire_payement);
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded

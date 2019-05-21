@@ -223,7 +223,7 @@ function save()
         
 }
 
-function delete_dossier(id)
+ function delete_dossier(id)
 {
     if(confirm('Are you sure delete this data?'))
     {
@@ -246,6 +246,7 @@ function delete_dossier(id)
 
     }
 }
+
 $(document).ready(function() {
  //bind_type_dossier();
  bind_client();

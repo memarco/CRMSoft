@@ -143,10 +143,10 @@ public function success(){
    echo json_encode(array("status" => TRUE));
  }
 
- public function ajax_delete($id)
- {
-   $this->dossier->delete_by_id($id);
-   echo json_encode(array("status" => TRUE));
- }
+  public function ajax_delete($id)
+	{
+		$this->dossier->delete_by_id($id);
+		echo json_encode(array("status" => TRUE));
+	}
 
 }

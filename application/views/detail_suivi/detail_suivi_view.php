@@ -182,74 +182,7 @@ Payement du  dossier &nbsp;
      
 <!--     Boîte dialogue depense-->
 
-     <div class="modal fade" id="modal_form1" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h3 class="modal-title">Client Form</h3>
-            </div>
-            <div class="modal-body form">
-<div class="chit-chat-heading">
-Depense du  dossier &nbsp;
-</div>
-    <br/>    <br/>
-    <form action="#" id="form1" class="form-horizontal">
-        <input type="hidden" value="" name="id"/>
-        <div class="form-body">
-
-      <div class="form-group">
-          <label class="control-label col-md-3">Dossier</label>
-          <div class="col-md-9">
-              <select class="form-control" id="ps_dossier" name="id_dossier">
-              </select>
-              <span class="help-block"></span>
-          </div>
-      </div>
-
-        <div class="form-group">
-            <label class="control-label col-md-3">Libellé:</label>
-            <div class="col-md-9">
-                <input name="libelle_depense"  class="form-control" type="text">
-                <span class="help-block"></span>
-            </div>
-        </div>
-<!--
-            <div class="form-group">
-                <label class="control-label col-md-3">Type Payement : </label>
-                <div class="col-md-9">
-                    <select class="form-control" id="s_type_payement" name="id_type_payement">
-                    </select>
-                    <span class="help-block"></span>
-                </div>
-            </div>-->
-
-            <div class="form-group">
-                <label class="control-label col-md-3">Montant Depense :</label>
-                <div class="col-md-9">
-                    <input name="montant_depense"    class="form-control" type="number">
-                    <span class="help-block"></span>
-                </div>
-            </div>
-
-          <div class="form-group">
-                <label class="control-label col-md-3">Commentaire :</label>
-                <div class="col-md-9">
-                    <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="2" name="commentaire_depense"></textarea>
-                    <span class="help-block"></span>
-                </div>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" id="btnSave" onclick="save_depense()" class="btn btn-primary">Save</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-            </div>
-        </div>
-    </form>
-  </div>
-</div><!-- /.modal-content -->
-</div><!-- /.modal-dialog -->
-</div>
+   
      
 </div>
 
@@ -328,7 +261,7 @@ Depense du  dossier &nbsp;
           $('.help-block').empty(); // clear error string
           var items = "";
            items += "<option value='"+id_dossier+"' selected>"+document.getElementById('s_dossier').value+"</option>";
-                $("#ps_dossier").html(items);
+                $("#hs_dossier").html(items);
           //document.getElementById('ps_dossier').value=document.getElementById('s_dossier').value;
 //          bind_type_payement();
           $('#modal_form1').modal('show'); // show bootstrap modal
@@ -341,7 +274,7 @@ Depense du  dossier &nbsp;
             $.ajax({
                 url : "<?php echo site_url('depense/ajax_add')?>",
                 type: "POST",
-                data: $('#form1').serialize(),
+                data: $('#form').serialize(),
                 dataType: "JSON",
                 success: function(data)
                 {
@@ -526,6 +459,78 @@ Depense du  dossier &nbsp;
 })*/
             });
         </script>
+  
+ <div class="chit-chat-layer1"> 
+   <div class="modal fade" id="modal_form1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title">Client Form</h3>
+            </div>
+            <div class="modal-body form">
+<div class="chit-chat-heading">
+Depense du  dossier &nbsp;
+</div>
+    <br/>    <br/>
+    <form action="#" id="form" class="form-horizontal">
+        <input type="hidden" value="" name="id"/>
+        <div class="form-body">
+
+      <div class="form-group">
+          <label class="control-label col-md-3">Dossier</label>
+          <div class="col-md-9">
+              <select class="form-control" id="hs_dossier" name="id_dossier">
+              </select>
+              <span class="help-block"></span>
+          </div>
+      </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-3">Libellé:</label>
+            <div class="col-md-9">
+                <input name="libelle_depense"  class="form-control" type="text">
+                <span class="help-block"></span>
+            </div>
+        </div>
+<!--
+            <div class="form-group">
+                <label class="control-label col-md-3">Type Payement : </label>
+                <div class="col-md-9">
+                    <select class="form-control" id="s_type_payement" name="id_type_payement">
+                    </select>
+                    <span class="help-block"></span>
+                </div>
+            </div>-->
+
+            <div class="form-group">
+                <label class="control-label col-md-3">Montant Depense :</label>
+                <div class="col-md-9">
+                    <input name="montant_depense"    class="form-control" type="number">
+                    <span class="help-block"></span>
+                </div>
+            </div>
+
+          <div class="form-group">
+                <label class="control-label col-md-3">Commentaire :</label>
+                <div class="col-md-9">
+                    <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="2" name="commentaire_depense"></textarea>
+                    <span class="help-block"></span>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" id="btnSave" onclick="save_depense()" class="btn btn-primary">Save</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </form>
+  </div>
+</div><!-- /.modal-content -->
+</div><!-- /.modal-dialog -->
+</div>
+ 
+ </div>
     </body>
 </html>
 
