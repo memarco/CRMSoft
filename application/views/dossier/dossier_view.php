@@ -25,7 +25,7 @@ Liste des dossiers &nbsp;
                     <th>Montant (Euro)</th>
                     <th>Date démarrage</th>
                     <th>Description</th>
-                    <th style="width:80px;">Action</th>
+                    <th style="width:110px;">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -170,7 +170,7 @@ function save()
     $('#btnSave').text('saving...'); //change button text
     $('#btnSave').attr('disabled',true); //set button disable
     var url;
-        
+
 //    if(document.getElementById('status_dossier').value == ""){
 //      document.getElementById('h_status_dossier').innerHTML = "Veuillez remplir ce champ S.V.P !";
 //    }
@@ -188,8 +188,8 @@ function save()
 //        {
 //          document.getElementById('h_montant_traitement').innerHTML = "Veuillez remplir ce champ S.V.P !";
 //        }
-        
-          
+
+
              if(save_method == 'add') {
              url = "<?php echo site_url('dossier/ajax_add')?>";
             } else {
@@ -209,7 +209,7 @@ function save()
                     $('#modal_form').modal('hide');
                                    reload_table();
                   }
-                  
+
                   $('#btnSave').text('save'); //change button text
                   $('#btnSave').attr('disabled',false); //set button enable
               },
@@ -220,7 +220,7 @@ function save()
                  $('#btnSave').attr('disabled',false); //set button enable
               }
           });
-        
+
 }
 
  function delete_dossier(id)
@@ -266,7 +266,7 @@ $(document).ready(function() {
                 <form action="#" id="form" class="form-horizontal">
                     <input type="hidden" value="" name="id"/>
                     <div class="form-body">
-                        
+
 <!--                        <div class="form-group">
                             <label class="control-label col-md-3">Type de dossier</label>
                             <div class="col-md-9">
