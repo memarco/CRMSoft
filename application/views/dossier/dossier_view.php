@@ -286,7 +286,12 @@ $(document).ready(function() {
                          <div class="form-group">
                             <label class="control-label col-md-3">Status du dossier:</label>
                             <div class="col-md-9">
-                                <input name="status_dossier"  class="form-control" type="text" id="status_dossier" required>
+                                 <select name="status_dossier" class="form-control" type="text" id="status_dossier">
+                                        <option value="Encours de Traitement">Encours de Traitement</option>
+                                        <option value="Terminé">Terminé</option>
+                                        <option value="Clôturé">Clôturé</option>
+                                      </select>
+<!--                                <input name="status_dossier"  class="form-control" type="text" id="status_dossier" required>-->
                                 <span class="help-block"></span>
                             </div>
                         </div>
