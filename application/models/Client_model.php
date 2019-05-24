@@ -98,14 +98,36 @@ class Client_model extends CI_Model {
 
 	public function update($where, $data)
 	{
-		$this->db->update($this->table, $data, $where);
+            $this->db->query(" 
+                CREATE TRIGGER trig_avant_update_dossiers
+                  BEFORE UPDATE ON clients FOR EACH ROW
+                    BEGIN
+                      SET NEW.version = OLD.version + 1;
+                      INSERT INTO histo_status
+                        (action, date_action,version,id_original,status_dossier)
+                      VALUES
+                        ('update', NOW(), OLD.version, OLD.id ,OLD.nom_client);
+                    END;
+                ");
+             $this->db->update($this->table, $data, $where);
 		return $this->db->affected_rows();
 	}
 
 	public function delete_by_id($id)
 	{
-		$this->db->where('id', $id);
-		$this->db->delete($this->table);
+          $this->db->query("
+            CREATE TRIGGER trig_apres_delete_clients
+            AFTER DELETE ON clients FOR EACH ROW
+             BEGIN
+                INSERT INTO histo_status
+                  (action, date_action,version,id_original,status_dossier)
+                VALUES
+                  ('delete', NOW(),OLD.id ,OLD.nom_client);
+              END 
+              ");    
+
+           $this->db->where('id', $id);
+	   $this->db->delete($this->table);
 	}
 
 

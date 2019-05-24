@@ -126,15 +126,36 @@ LEFT JOIN depenses dep ON dep.id_dossier = d.id
 
  public function update($where, $data)
  {
+   $this->db->query(" 
+    CREATE TRIGGER trig_avant_update_dossiers
+      BEFORE UPDATE ON dossiers FOR EACH ROW
+        BEGIN
+          SET NEW.version = OLD.version + 1;
+          INSERT INTO histo_status
+            (action, date_action,version,id_original,status_dossier)
+          VALUES
+            ('update', NOW(), OLD.version, OLD.id ,OLD.status_dossier);
+        END;
+    ");  
    $this->db->update($this->table, $data, $where);
    return $this->db->affected_rows();
  }
 
+ 
  public function delete_by_id($id)
  {
+   $this->db->query(" 
+    CREATE TRIGGER trig_apres_delete_dossiers
+    AFTER DELETE ON dossiers FOR EACH ROW
+        BEGIN
+           INSERT INTO histo_status
+             (action, date_action,version,id_original,status_dossier)
+           VALUES
+             ('delete', NOW(),OLD.version, OLD.id ,OLD.status_dossier);
+         END
+    ");
    $this->db->where('id', $id);
    $this->db->delete($this->table);
  }
-
-
+ 
 }
