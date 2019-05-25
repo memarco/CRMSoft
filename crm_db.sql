@@ -228,3 +228,24 @@ ALTER TABLE `dossiers`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
+
+
+-- Structure de la table `histo_status`
+
+
+CREATE TABLE IF NOT EXISTS `histo_status` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `action` enum('update','delete') DEFAULT NULL,
+  `date_action` datetime DEFAULT NULL,
+  `version` bigint(20) NOT NULL DEFAULT '0',
+  `id_original` int(11) NOT NULL DEFAULT '0',
+  `status_dossier` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_original` (`id_original`),
+  KEY `action` (`action`),
+  KEY `date_action` (`date_action`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
