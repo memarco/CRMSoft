@@ -17,6 +17,7 @@ class Dossier_model extends CI_Model {
  private function _get_datatables_query()
  {
 
+   $this->db->select('*, d.id as id_dossier');
    $this->db->from('dossiers as d');
    $this->db->join('clients as cli', 'cli.id = d.id_client','left');
    $this->db->join('categories as ca', 'ca.id = d.id_categorie','left');
@@ -110,7 +111,7 @@ LEFT JOIN depenses dep ON dep.id_dossier = d.id
  public function get_by_id_client($id)
  {
 
-   $this->db->select('*');
+   $this->db->select('*, d.id as id_dossier');
    $this->db->from($this->table.' as d');
    $this->db->join('clients as cl', 'd.id_client = cl.id','left');
    $this->db->where('numero_dossier', $id);
@@ -126,7 +127,7 @@ LEFT JOIN depenses dep ON dep.id_dossier = d.id
 
  public function update($where, $data)
  {
-   $this->db->query(" 
+   /*$this->db->query("
     CREATE TRIGGER trig_avant_update_dossiers
       BEFORE UPDATE ON dossiers FOR EACH ROW
         BEGIN
@@ -136,15 +137,15 @@ LEFT JOIN depenses dep ON dep.id_dossier = d.id
           VALUES
             ('update', NOW(), OLD.version, OLD.id ,OLD.status_dossier);
         END;
-    ");  
+    ");  */
    $this->db->update($this->table, $data, $where);
    return $this->db->affected_rows();
  }
 
- 
+
  public function delete_by_id($id)
  {
-   $this->db->query(" 
+/*   $this->db->query("
     CREATE TRIGGER trig_apres_delete_dossiers
     AFTER DELETE ON dossiers FOR EACH ROW
         BEGIN
@@ -153,9 +154,9 @@ LEFT JOIN depenses dep ON dep.id_dossier = d.id
            VALUES
              ('delete', NOW(),OLD.version, OLD.id ,OLD.status_dossier);
          END
-    ");
+    ");*/
    $this->db->where('id', $id);
    $this->db->delete($this->table);
  }
- 
+
 }

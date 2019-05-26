@@ -19,7 +19,7 @@ Liste des dossiers &nbsp;
             <thead>
                 <tr>
                     <th>Client </th>
-<!--                    <th>Categorie</th>-->
+                  <th>Libellé</th>
                     <th>Numero</th>
                     <th>Status</th>
                     <th>Montant (Euro)</th>
@@ -140,13 +140,15 @@ function edit_dossier(id)
 
     //Ajax Load data from ajax
     $.ajax({
-        url : "<?php echo site_url('dossier/ajax_edit/')?>/" + id,
+        url : "<?php echo site_url('dossier/ajax_edit/')?>" + id,
         type: "GET",
         dataType: "JSON",
         success: function(data)
         {
             $('[name="id"]').val(data.id);
             $('[name="id_client"]').val(data.id_client);
+            $('[name="libelle_dossier"]').val(data.libelle_dossier);
+            $('[name="s_type_dossier"]').val(data.id_type_dossier);
             $('[name="status_dossier"]').val(data.status_dossier);
             $('[name="montant_traitement"]').val(data.montant_traitement);
             $('[name="description_dossier"]').val(data.description_dossier);
@@ -267,25 +269,32 @@ $(document).ready(function() {
                     <input type="hidden" value="" name="id"/>
                     <div class="form-body">
 
-<!--                        <div class="form-group">
-                            <label class="control-label col-md-3">Type de dossier</label>
-                            <div class="col-md-9">
+                      <div class="form-group">
+                          <label class="control-label col-md-4">Libellé </label>
+                          <div class="col-md-8">
+                              <input name="libelle_dossier"  class="form-control" type="text" id="libelle_dossier" required>
+                              <span class="help-block" id="h_libelle_dossier" style="color:red"></span>
+                          </div>
+                      </div>
+                       <div class="form-group">
+                            <label class="control-label col-md-4">Type de dossier</label>
+                            <div class="col-md-8">
                                 <select class="form-control" id="s_type_dossier" name="id_categorie">
                                 </select>
                                 <span class="help-block" id="h_type_dossier" style="color:red"></span>
                             </div>
-                        </div>-->
+                        </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3">Client : </label>
-                            <div class="col-md-9">
+                            <label class="control-label col-md-4">Client  </label>
+                            <div class="col-md-8">
                                 <select class="form-control" id="s_client" name="id_client">
                                 </select>
                                 <span class="help-block"></span>
                             </div>
                         </div>
                          <div class="form-group">
-                            <label class="control-label col-md-3">Status du dossier:</label>
-                            <div class="col-md-9">
+                            <label class="control-label col-md-4">Status </label>
+                            <div class="col-md-8">
                                  <select name="status_dossier" class="form-control" type="text" id="status_dossier">
                                         <option value="Encours de Traitement">Encours de Traitement</option>
                                         <option value="Terminé">Terminé</option>
@@ -296,22 +305,22 @@ $(document).ready(function() {
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3">Montant côtation (Euro) :</label>
-                            <div class="col-md-9">
+                            <label class="control-label col-md-4">Montant côtation (€) </label>
+                            <div class="col-md-8">
                                 <input name="montant_traitement"  class="form-control" type="number">
                                 <span class="help-block"></span>
                             </div>
                         </div>
                       <div class="form-group">
-                            <label class="control-label col-md-3">Description :</label>
-                            <div class="col-md-9">
+                            <label class="control-label col-md-4">Description </label>
+                            <div class="col-md-8">
                                 <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="2" name="description_dossier"></textarea>
                                 <span class="help-block"></span>
                             </div>
                         </div>
                        <div class="form-group">
-                            <label class="control-label col-md-3">Ajouter Images :</label>
-                            <div class="col-md-9">
+                            <label class="control-label col-md-4">Ajouter Images </label>
+                            <div class="col-md-8">
                             <input type="file" class="custom-file-input" id="inputGroupFile01" name="image_dossier[]" multiple
                               aria-describedby="inputGroupFileAddon01" >  <span class="help-block"></span>
                             </div>

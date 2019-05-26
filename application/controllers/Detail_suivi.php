@@ -47,7 +47,7 @@ $marge=new StdClass();
     //commandes
     $total_depense=$total_depense+$_data_depense->montant_depense;
   }
-  $_marge = $total_depense-$total_paiement;
+  $_marge = $total_paiement-$total_depense;
   $marge->total_payement=$total_paiement;
   $marge->total_depense=$total_depense;
   $marge->marge=$_marge;
