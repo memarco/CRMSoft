@@ -20,9 +20,9 @@ require_once(APPPATH . "views/templates/header.php");
         <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
-                    <th>Type depense </th>
+<!--                    <th>Type depense </th>-->
                     <th>Dossier</th>
-                    <th>Libelle</th>
+<!--                    <th>Libelle</th>-->
                     <th>Montant (Euro)</th>
                     <th>Date</th>
                     <th>Commentaire</th>
@@ -105,9 +105,9 @@ function edit_depense(id)
         {
 
             $('[name="id"]').val(data.id);
-            $('[name="libelle_type_depense"]').val(data.libelle_type_depense);
-            $('[name="numero_dossier"]').val(data.numero_dossier);
-            $('[name="libelle_depense"]').val(data.libelle_depense);
+//            $('[name="libelle_type_depense"]').val(data.libelle_type_depense);
+            $('[name="id_dossier"]').val(data.id_dossier);
+//            $('[name="libelle_depense"]').val(data.libelle_depense);
             $('[name="montant_depense"]').val(data.montant_depense);
             $('[name="date_depense"]').val(data.date_depense);
             $('[name="commentaire_depense"]').val(data.commentaire_depense);;
@@ -289,14 +289,14 @@ $(document).ready(function() {
             <input type="hidden" value="" name="id"/>
             <div class="form-body">
 
-            <div class="form-group">
+<!--            <div class="form-group">
                 <label class="control-label col-md-3">Libelle Type depense</label>
                 <div class="col-md-9">
                     <select class="form-control" id="s_type_depense" name="id_type_depense">
                     </select>
                     <span class="help-block"></span>
                 </div>
-            </div>
+            </div>-->
 
 
             <div class="form-group">
@@ -308,13 +308,13 @@ $(document).ready(function() {
                     </div>
             </div>
 
-            <div class="form-group">
+<!--            <div class="form-group">
                 <label class="control-label col-md-3">Libellé depense :</label>
                 <div class="col-md-9">
                     <input name="libelle_dossier"  class="form-control" type="text">
                     <span class="help-block"></span>
                 </div>
-            </div>
+            </div>-->
 
                 <div class="form-group">
                     <label class="control-label col-md-3">Montant (Euro) :</label>

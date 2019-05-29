@@ -18,7 +18,7 @@ class Depense_model extends CI_Model {
  {
 
    $this->db->from('depenses as dep');
-   $this->db->join('type_depenses as ty', 'ty.id = dep.	id_type_depense','left');
+   //$this->db->join('type_depenses as ty', 'ty.id = dep.	id_type_depense','left');
    $this->db->join('dossiers as do', 'do.id = dep.id_dossier','left');
 
    $i = 0;

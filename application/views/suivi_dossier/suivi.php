@@ -126,13 +126,13 @@ $(document).ready(function() {
         "order": [], //Initial no order.
         
         rowCallback: function(row, data, index){
-  	if(data[3] == "Termine"){
+  	if(data[3] == "Clôturé"){
     	$(row).find('td:eq(3)').css('color', 'green');
             }
-        if(data[3] == "Encours"){
+        if(data[3] == "Terminé"){
     	$(row).find('td:eq(3)').css('color', 'blue');
             }
-        if(data[3] == "En attente"){
+        if(data[3] == "Encours de Traitement"){
     	$(row).find('td:eq(3)').css('color', 'red');
             }
         if(data[7] < 0){

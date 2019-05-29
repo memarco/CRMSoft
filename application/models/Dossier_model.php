@@ -20,7 +20,7 @@ class Dossier_model extends CI_Model {
    $this->db->select('*, d.id as id_dossier');
    $this->db->from('dossiers as d');
    $this->db->join('clients as cli', 'cli.id = d.id_client','left');
-   $this->db->join('categories as ca', 'ca.id = d.id_categorie','left');
+   
 
    $i = 0;
 
@@ -125,36 +125,29 @@ LEFT JOIN depenses dep ON dep.id_dossier = d.id
    return $this->db->insert_id();
  }
 
- public function update($where, $data)
- {
-   /*$this->db->query("
-    CREATE TRIGGER trig_avant_update_dossiers
-      BEFORE UPDATE ON dossiers FOR EACH ROW
-        BEGIN
-          SET NEW.version = OLD.version + 1;
-          INSERT INTO histo_status
-            (action, date_action,version,id_original,status_dossier)
-          VALUES
-            ('update', NOW(), OLD.version, OLD.id ,OLD.status_dossier);
-        END;
-    ");  */
-   $this->db->update($this->table, $data, $where);
-   return $this->db->affected_rows();
- }
+// public function update($where, $data)
+// {
+//   
+//   $this->db->update($this->table, $data, $where);
+//   return $this->db->affected_rows();
+// }
 
+ function update($id,$data)
+        {
+             $this->db->query(" 
+                  INSERT INTO histo_status(id_original,date_action,status_dossier)
+                  SELECT id,NOW(),status_dossier FROM `dossiers` WHERE `id` = '$id'
+               ");
+             
+            $this->db->where('id',$id);
+            $this->db->update('dossiers', $data);
+            return $this->db->affected_rows();
+        }
+ 
 
  public function delete_by_id($id)
  {
-/*   $this->db->query("
-    CREATE TRIGGER trig_apres_delete_dossiers
-    AFTER DELETE ON dossiers FOR EACH ROW
-        BEGIN
-           INSERT INTO histo_status
-             (action, date_action,version,id_original,status_dossier)
-           VALUES
-             ('delete', NOW(),OLD.version, OLD.id ,OLD.status_dossier);
-         END
-    ");*/
+
    $this->db->where('id', $id);
    $this->db->delete($this->table);
  }

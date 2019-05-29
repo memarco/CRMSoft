@@ -6,7 +6,7 @@ class Depense extends CI_Controller {
  public function __construct()
  {
    parent::__construct();
-   $this->load->model('type_depense_model','type_depense');
+   //$this->load->model('type_depense_model','type_depense');
    $this->load->model('depense_model','depense');
  }
 
@@ -37,10 +37,10 @@ class Depense extends CI_Controller {
    foreach ($list as $depense) {
      $no++;
      $row = array();
-     $row[] = $depense->libelle_type_depense;
+     //$row[] = $depense->libelle_type_depense;
      $row[] = $depense->numero_dossier;
 //     $row[] = $depense->num_depense;
-     $row[] = $depense->libelle_depense;
+     //$row[] = $depense->libelle_depense;
      $row[] = $depense->montant_depense;
      $row[] = $depense->date_depense;
      $row[] = $depense->commentaire_depense;
@@ -82,10 +82,9 @@ public function success(){
  public function ajax_add()
  {
    $data = array(
-       'id_type_depense' => $this->input->post('id_type_depense'),
+       //'id_type_depense' => $this->input->post('id_type_depense'),
        'id_dossier' => $this->input->post('id_dossier'),
-//       'num_depense' => $this->generate_num_dossier($this->input->post('id_client')),
-       'libelle_depense' => $this->input->post('libelle_depense'),
+     //'libelle_depense' => $this->input->post('libelle_depense'),
        'montant_depense' => $this->input->post('montant_depense'),
        'date_depense' => date("Y-m-d H:i:s"),
        'commentaire_depense' => $this->input->post('commentaire_depense')
@@ -97,10 +96,9 @@ public function success(){
  public function ajax_update()
  {
    $data = array(
-       'id_type_depense' => $this->input->post('id_type_depense'),
+       //'id_type_depense' => $this->input->post('id_type_depense'),
        'id_dossier' => $this->input->post('id_dossier'),
-//       'num_depense' => $this->generate_num_dossier($this->input->post('id_client')),
-       'libelle_depense' => $this->input->post('libelle_depense'),
+       //'libelle_depense' => $this->input->post('libelle_depense'),
        'montant_depense' => $this->input->post('montant_depense'),
        'date_depense' => date("Y-m-d H:i:s"),
        'commentaire_depense' => $this->input->post('commentaire_depense')

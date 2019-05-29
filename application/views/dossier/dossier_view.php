@@ -19,7 +19,7 @@ Liste des dossiers &nbsp;
             <thead>
                 <tr>
                     <th>Client </th>
-                  <th>Libellé</th>
+<!--                  <th>Libellé</th>-->
                     <th>Numero</th>
                     <th>Status</th>
                     <th>Montant (Euro)</th>
@@ -47,7 +47,6 @@ $(document).ready(function() {
         "processing": true, //Feature control the processing indicator.
         "serverSide": true, //Feature control DataTables' server-side processing mode.
         "order": [], //Initial no order.
-
         // Load data for the table's content from an Ajax source
         "ajax": {
             "url": "<?php echo site_url('dossier/ajax_list')?>",
@@ -147,8 +146,8 @@ function edit_dossier(id)
         {
             $('[name="id"]').val(data.id);
             $('[name="id_client"]').val(data.id_client);
-            $('[name="libelle_dossier"]').val(data.libelle_dossier);
-            $('[name="s_type_dossier"]').val(data.id_type_dossier);
+//            $('[name="libelle_dossier"]').val(data.libelle_dossier);
+//            $('[name="s_type_dossier"]').val(data.id_type_dossier);
             $('[name="status_dossier"]').val(data.status_dossier);
             $('[name="montant_traitement"]').val(data.montant_traitement);
             $('[name="description_dossier"]').val(data.description_dossier);
@@ -269,21 +268,6 @@ $(document).ready(function() {
                     <input type="hidden" value="" name="id"/>
                     <div class="form-body">
 
-                      <div class="form-group">
-                          <label class="control-label col-md-4">Libellé </label>
-                          <div class="col-md-8">
-                              <input name="libelle_dossier"  class="form-control" type="text" id="libelle_dossier" required>
-                              <span class="help-block" id="h_libelle_dossier" style="color:red"></span>
-                          </div>
-                      </div>
-                       <div class="form-group">
-                            <label class="control-label col-md-4">Type de dossier</label>
-                            <div class="col-md-8">
-                                <select class="form-control" id="s_type_dossier" name="id_categorie">
-                                </select>
-                                <span class="help-block" id="h_type_dossier" style="color:red"></span>
-                            </div>
-                        </div>
                         <div class="form-group">
                             <label class="control-label col-md-4">Client  </label>
                             <div class="col-md-8">

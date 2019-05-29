@@ -94,7 +94,7 @@ public function success(){
        'id_dossier' => $this->input->post('id_dossier'),
        'id_type_payement' => $this->input->post('id_type_payement'),
 //       'numero_dossier' => $this->generate_num_dossier($this->input->post('id_client')),
-       'libelle_payement' => $this->input->post('libelle_payement'),
+       //'libelle_payement' => $this->input->post('libelle_payement'),
        'montant_payement' => $this->input->post('montant_payement'),
        'date_payement' => date("Y-m-d H:i:s"),
        'commentaire_payement' => $this->input->post('commentaire_payement')

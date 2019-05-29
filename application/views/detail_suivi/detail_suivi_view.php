@@ -136,13 +136,13 @@
             </div>
         </div>
 
-          <div class="form-group">
+<!--          <div class="form-group">
               <label class="control-label col-md-3">Libellé:</label>
               <div class="col-md-9">
                   <input name="libelle_payement"  class="form-control" type="text">
                   <span class="help-block"></span>
               </div>
-          </div>
+          </div>-->
 
               <div class="form-group">
                   <label class="control-label col-md-3">Type Payement : </label>
@@ -501,13 +501,13 @@
             </div>
         </div>
 
-          <div class="form-group">
+<!--          <div class="form-group">
               <label class="control-label col-md-3">Libellé:</label>
               <div class="col-md-9">
                   <input name="libelle_depense"  class="form-control" type="text">
                   <span class="help-block"></span>
               </div>
-          </div>
+          </div>-->
   <!--
               <div class="form-group">
                   <label class="control-label col-md-3">Type Payement : </label>
