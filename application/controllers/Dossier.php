@@ -5,9 +5,19 @@ class Dossier extends CI_Controller {
 
  public function __construct()
  {
+
    parent::__construct();
    $this->load->model('client_model','client');
    $this->load->model('dossier_model','dossier');
+   $this->load->library(['ion_auth', 'form_validation']);
+   $this->load->helper(['url', 'language']);
+   $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
+   $this->lang->load('auth');
+   if (!$this->ion_auth->logged_in())
+   {
+     // redirect them to the login page
+     redirect('auth/login', 'refresh');
+   }
  }
 
  public function index()
@@ -129,7 +139,7 @@ public function success(){
 
  public function ajax_update()
  {
-     
+
     $id = $this->input->post('id');
    $data = array(
        'id_client' => $this->input->post('id_client'),
@@ -143,9 +153,9 @@ public function success(){
    $this->dossier->update($id, $data);
    echo json_encode(array("status" => TRUE));
  }
- 
- 
- 
+
+
+
 
   public function ajax_delete($id)
 	{

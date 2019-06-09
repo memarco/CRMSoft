@@ -231,8 +231,6 @@
 
           function save_payment()
           {
-
-
               // ajax adding data to database
               $.ajax({
                   url : "<?php echo site_url('payement/ajax_add')?>",
@@ -308,7 +306,7 @@
                     var items = "";
                      items += "<option value='' disabled selected>- Choisir -</option>";
                      $.each(data, function (i, item) {
-                           items += "<option value='" + item.numero_dossier + "'>" + (item.numero_dossier) + " | "+ (item.libelle_dossier) +"</option>";
+                           items += "<option value='" + item.numero_dossier + "'>" + (item.numero_dossier) + " | "+ (item.description_dossier) +"</option>";
                      });
                      $("#s_dossier").html(items);
 
@@ -339,7 +337,7 @@
                       var total_payement = response.data_marge.total_payement;
                       var total_depense = response.data_marge.total_depense;
 
-                      $('#snum').text(num+" "+response.data_client.libelle_dossier);
+                      $('#snum').text(num+" - "+response.data_client.description_dossier);
                       $('#sstatut').text(status);
                       $('#smontant').text(montant);
                       $('#snomclient').text(nomcli);

@@ -120,11 +120,11 @@ $(document).ready(function() {
 
     //datatables
     table = $('#table').DataTable({
-     
+
         "processing": true, //Feature control the processing indicator.
         "serverSide": true, //Feature control DataTables' server-side processing mode.
         "order": [], //Initial no order.
-        
+
         rowCallback: function(row, data, index){
   	if(data[3] == "Clôturé"){
     	$(row).find('td:eq(3)').css('color', 'green');
