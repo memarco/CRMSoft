@@ -12,14 +12,13 @@ require_once(APPPATH . "views/templates/header.php");
                               <div class="chit-chat-heading">
 Liste des dossiers &nbsp;
 <button class="btn btn-success" onclick="add_dossier()">Ajout Dossier</button>
-<!--       <a  class="btn btn-success"  href="<?php echo base_url(); ?>index.php/dossier/open"> Nouveau dossier </a>-->
-        <br/>    <br/>
+ <br/>    <br/>
 </div>
         <table id="table" class="table table-striped table-bordered" cellspacing="0" width="100%">
             <thead>
                 <tr>
+<!--                    <th>ID </th>-->
                     <th>Client </th>
-<!--                  <th>Libellé</th>-->
                     <th>Numero</th>
                     <th>Status</th>
                     <th>Montant (Euro)</th>
@@ -145,14 +144,12 @@ function edit_dossier(id)
         success: function(data)
         {
             $('[name="id"]').val(data.id);
-            $('[name="id_client"]').val(data.id_client);
-//            $('[name="libelle_dossier"]').val(data.libelle_dossier);
-//            $('[name="s_type_dossier"]').val(data.id_type_dossier);
             $('[name="status_dossier"]').val(data.status_dossier);
+            $('[name="client_id"]').val(data.client_id);
             $('[name="montant_traitement"]').val(data.montant_traitement);
             $('[name="description_dossier"]').val(data.description_dossier);
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
-            $('.modal-title').text('Edit payement'); // Set title to Bootstrap modal title
+            $('.modal-title').text('Edit dossier'); // Set title to Bootstrap modal title
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
@@ -267,11 +264,11 @@ $(document).ready(function() {
                 <form action="#" id="form" class="form-horizontal">
                     <input type="hidden" value="" name="id"/>
                     <div class="form-body">
-
+                        
                         <div class="form-group">
                             <label class="control-label col-md-4">Client  </label>
                             <div class="col-md-8">
-                                <select class="form-control" id="s_client" name="id_client">
+                                <select class="form-control" id="s_client" name="client_id">
                                 </select>
                                 <span class="help-block"></span>
                             </div>

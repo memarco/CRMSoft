@@ -22,40 +22,57 @@ class Client extends CI_Controller {
 
 	public function ajax_list()
 	{
-		$list = $this->client->get_datatables();
-		$data = array();
-		$no = $_POST['start'];
-		foreach ($list as $client) {
-			$no++;
-			$row = array();
-			$row[] = $client->nom_client;
-			$row[] = $client->prenom_client;
-			$row[] = $client->email_client;
-                        $row[] = $client->tel_client;
-                        $row[] = $client->addresse_client;
-			$row[] = $client->autre_info_client;
-
-			//add html for action
-			$row[] = '<a href="javascript:void(0);" class="btn btn-info btn-sm editRecord"   title="Edit" onclick="edit_client('."'".$client->id."'".')">  Edit</a>
-				 <a href="javascript:void(0);" class="btn btn-danger btn-sm deleteRecord"   title="Hapus" onclick="delete_client('."'".$client->id."'".')">  Delete</a>';
-
-
-			$data[] = $row;
+            $output = array('data' => array());
+   $data = $this->client->getclientdatatables();
+   foreach ($data as $key => $value) {
+       
+       
+       $output['data'][$key] = array(
+				
+				$value['nom_client'],
+                                $value['prenom_client'],
+			        $value['email_client'],
+                                $value['tel_client'],
+                                $value['addresse_client'],
+                                $value['autre_info_client'],
+                                
+    '<a href="javascript:void(0);" class="btn btn-info btn-sm editRecord"   title="Edit" onclick="edit_client('."'".$value['id']."'".')">  Edit</a>
+        <a href="javascript:void(0);" class="btn btn-danger btn-sm deleteRecord"   title="Hapus" onclick="delete_client('."'".$value['id']."'".')">  Delete</a>'
+			);
+//		$list = $this->client->getclientdatatables();
+//		$data = array();
+//		$no = $_POST['start'];
+//		foreach ($list as $client) {
+//			$no++;
+//			$row = array();
+//			$row[] = $client->nom_client;
+//			$row[] = $client->prenom_client;
+//			$row[] = $client->email_client;
+//                        $row[] = $client->tel_client;
+//                        $row[] = $client->addresse_client;
+//			$row[] = $client->autre_info_client;
+//
+//			//add html for action
+//			$row[] = '<a href="javascript:void(0);" class="btn btn-info btn-sm editRecord"   title="Edit" onclick="edit_client('."'".$client->id."'".')">  Edit</a>
+//				 <a href="javascript:void(0);" class="btn btn-danger btn-sm deleteRecord"   title="Hapus" onclick="delete_client('."'".$client->id."'".')">  Delete</a>';
+//
+//
+//			$data[] = $row;
 		}
 
-		$output = array(
-						"draw" => $_POST['draw'],
-						"recordsTotal" => $this->client->count_all(),
-						"recordsFiltered" => $this->client->count_filtered(),
-						"data" => $data,
-				);
+//		$output = array(
+//						"draw" => $_POST['draw'],
+//						"recordsTotal" => $this->client->count_all(),
+//						"recordsFiltered" => $this->client->count_filtered(),
+//						"data" => $data,
+//				);
 		//output to json format
 		echo json_encode($output);
 	}
 
 	public function ajax_edit($id)
 	{
-		$data = $this->client->get_by_id($id);
+		$data = $this->client->getclient_by_id($id);
 		echo json_encode($data);
 	}
 

@@ -59,13 +59,24 @@ class Client_model extends CI_Model {
 
 		return $query->result();
 	}
-	function get_datatables()
+	function getclientdatatables($id = null)
 	{
-		$this->_get_datatables_query();
-		if($_POST['length'] != -1)
-		$this->db->limit($_POST['length'], $_POST['start']);
-		$query = $this->db->get();
-		return $query->result();
+//		$this->_get_datatables_query();
+//		if($_POST['length'] != -1)
+//		$this->db->limit($_POST['length'], $_POST['start']);
+//		$query = $this->db->get();
+//		return $query->result();
+            
+            if($id) {
+			$sql = "SELECT * FROM clients where id = ?";
+			$query = $this->db->query($sql, array($id));
+			return $query->result_array();
+		}
+
+		$sql = "SELECT * FROM clients BY id DESC";
+		$query = $this->db->query($sql);
+		return $query->result_array();
+            
 	}
 
 	function count_filtered()
@@ -81,7 +92,7 @@ class Client_model extends CI_Model {
 		return $this->db->count_all_results();
 	}
 
-	public function get_by_id($id)
+	public function getclient_by_id($id)
 	{
 		$this->db->from($this->table);
 		$this->db->where('id',$id);

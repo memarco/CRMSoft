@@ -61,13 +61,23 @@ class Payement_model extends CI_Model {
 
    return $query->result();
  }
- function get_datatables()
+ function getpayementdatatables($id = null)
  {
-   $this->_get_datatables_query();
-   if($_POST['length'] != -1)
-   $this->db->limit($_POST['length'], $_POST['start']);
-   $query = $this->db->get();
-   return $query->result();
+     
+     if($id) {
+			$sql = "SELECT * FROM payements where id = ?";
+			$query = $this->db->query($sql, array($id));
+			return $query->result_array();
+		}
+
+		$sql = "SELECT * FROM payements ORDER BY id DESC";
+		$query = $this->db->query($sql);
+		return $query->result_array();
+//   $this->_get_datatables_query();
+//   if($_POST['length'] != -1)
+//   $this->db->limit($_POST['length'], $_POST['start']);
+//   $query = $this->db->get();
+//   return $query->result();
  }
 
  function count_filtered()

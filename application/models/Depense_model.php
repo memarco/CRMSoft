@@ -61,13 +61,23 @@ class Depense_model extends CI_Model {
 
    return $query->result();
  }
- function get_datatables()
+ function getdepensedatatables($id = null)
  {
-   $this->_get_datatables_query();
-   if($_POST['length'] != -1)
-   $this->db->limit($_POST['length'], $_POST['start']);
-   $query = $this->db->get();
-   return $query->result();
+//   $this->_get_datatables_query();
+//   if($_POST['length'] != -1)
+//   $this->db->limit($_POST['length'], $_POST['start']);
+//   $query = $this->db->get();
+//   return $query->result();
+     
+      if($id) {
+			$sql = "SELECT * FROM depenses where id = ?";
+			$query = $this->db->query($sql, array($id));
+			return $query->result_array();
+		}
+
+		$sql = "SELECT * FROM depenses ORDER BY id DESC";
+		$query = $this->db->query($sql);
+		return $query->result_array();
  }
 
  function count_filtered()

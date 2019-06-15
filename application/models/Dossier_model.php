@@ -6,7 +6,7 @@ class Dossier_model extends CI_Model {
  var $table = 'dossiers';
  var $column_order = array('cli.nom_client','ca.libelle_categorie','d.numero_dossier','d.status_dossier','d.montant_traitement','d.date','d.description_dossier'); //set column field database for datatable orderable
  var $column_search = array('nom_client','status_dossier'); //set column field database for datatable searchable just firstname , lastname , address are searchable
- var $order = array('d.id' => 'desc'); // default order
+ var $order = array('dossiers.id' => 'desc'); // default order
 
  public function __construct()
  {
@@ -14,77 +14,93 @@ class Dossier_model extends CI_Model {
    $this->load->database();
  }
 
- private function _get_datatables_query()
+ public function getDossierdatatables($id = null)
  {
 
-   $this->db->select('*, d.id as id_dossier');
-   $this->db->from('dossiers as d');
-   $this->db->join('clients as cli', 'cli.id = d.id_client','left');
+//   //$this->db->select('*, d.id as id_dossier');
+//   $this->db->from('dossiers as d');
+//   $this->db->join('clients as cli', 'd.client_id = cli.id','right');
+     
+        //$this->db->select('dossiers.*,clients.nom_client');
+     
+//        $this->db->from('dossiers');
+//        $this->db->join('clients', 'clients.id = dossiers.client_id','left');
+         if($id) {
+			$sql = "SELECT * FROM dossiers where id = ?";
+			$query = $this->db->query($sql, array($id));
+			return $query->result_array();
+		}
+                 
+		$sql = "SELECT * FROM dossiers ORDER BY id DESC";
+                
+		$query = $this->db->query($sql);
+		return $query->result_array();
+       
    
 
-   $i = 0;
-
-   foreach ($this->column_search as $item) // loop column
-   {
-     if($_POST['search']['value']) // if datatable send POST for search
-     {
-
-       if($i===0) // first loop
-       {
-         $this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
-         $this->db->like($item, $_POST['search']['value']);
-       }
-       else
-       {
-         $this->db->or_like($item, $_POST['search']['value']);
-       }
-
-       if(count($this->column_search) - 1 == $i) //last loop
-         $this->db->group_end(); //close bracket
-     }
-     $i++;
-   }
-
-   if(isset($_POST['order'])) // here order processing
-   {
-     $this->db->order_by($this->column_order[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
-   }
-   else if(isset($this->order))
-   {
-     $order = $this->order;
-     $this->db->order_by(key($order), $order[key($order)]);
-   }
+//   $i = 0;
+//
+//   foreach ($this->column_search as $item) // loop column
+//   {
+//     if($_POST['search']['value']) // if datatable send POST for search
+//     {
+//
+//       if($i===0) // first loop
+//       {
+//         $this->db->group_start(); // open bracket. query Where with OR clause better with bracket. because maybe can combine with other WHERE with AND.
+//         $this->db->like($item, $_POST['search']['value']);
+//       }
+//       else
+//       {
+//         $this->db->or_like($item, $_POST['search']['value']);
+//       }
+//
+//       if(count($this->column_search) - 1 == $i) //last loop
+//         $this->db->group_end(); //close bracket
+//     }
+//     $i++;
+//   }
+//
+//   if(isset($_POST['order'])) // here order processing
+//   {
+//     $this->db->order_by($this->column_order[$_POST['order']['0']['column']], $_POST['order']['0']['dir']);
+//   }
+//   else if(isset($this->order))
+//   {
+//     $order = $this->order;
+//     $this->db->order_by(key($order), $order[key($order)]);
+//   }
  }
 
- public function get_all()
+ public function getDossierall()
  {
    $this->db->from($this->table);
    $query = $this->db->get();
 
    return $query->result();
  }
- function get_datatables()
- {
-   $this->_get_datatables_query();
-   if($_POST['length'] != -1)
-   $this->db->limit($_POST['length'], $_POST['start']);
-   $query = $this->db->get();
-   return $query->result();
- }
+// function getDossierdatatables()
+// {
+//   $this->get_datatables_query();
+//   if($_POST['length'] != -1)
+//   $this->db->limit($_POST['length'], $_POST['start']);
+//   $query = $this->db->get();
+//   return $query->result();
+// }
 
 
- function count_filtered()
- {
-   $this->_get_datatables_query();
-   $query = $this->db->get();
-   return $query->num_rows();
- }
-
- public function count_all()
- {
-   $this->db->from($this->table);
-   return $this->db->count_all_results();
- }
+// function count_filtered()
+// {
+//   $this->get_datatables_query();
+//   $query = $this->db->get();
+//   return $query->num_rows();
+// }
+//
+// public function count_all()
+// {
+//   $this->db->from($this->table);
+//   return $this->db->count_all_results();
+// }
 
  public function get_by_id($id)
  {
@@ -93,6 +109,13 @@ class Dossier_model extends CI_Model {
    $query = $this->db->get();
 
    return $query->row();
+     
+//     $this->db->select('dossiers.*,clients.nom_client');
+//        $this->db->from('dossiers');
+//        $this->db->join('clients', 'clients.id = dossiers.id_client','left');
+//        $this->db->where('dossiers.id',$id);
+//        $query = $this->db->get();
+//        return $query->row();
  }
 
  public function get_marge_by_id($id)
@@ -113,7 +136,7 @@ LEFT JOIN depenses dep ON dep.id_dossier = d.id
 
    $this->db->select('*, d.id as id_dossier');
    $this->db->from($this->table.' as d');
-   $this->db->join('clients as cl', 'd.id_client = cl.id','left');
+   $this->db->join('clients as cl', 'd.client_id = cl.id','left');
    $this->db->where('numero_dossier', $id);
    $query = $this->db->get();
 

@@ -61,13 +61,22 @@ class Type_payement_model extends CI_Model {
                     return $query->result();
             }
 
-        function get_datatables()
+        function gettype_payementdatatables($id = null)
 	{
-		$this->_get_datatables_query();
-		if($_POST['length'] != -1)
-		$this->db->limit($_POST['length'], $_POST['start']);
-		$query = $this->db->get();
-		return $query->result();
+//		$this->_get_datatables_query();
+//		if($_POST['length'] != -1)
+//		$this->db->limit($_POST['length'], $_POST['start']);
+//		$query = $this->db->get();
+//		return $query->result();
+            if($id) {
+			$sql = "SELECT * FROM type_payements where id = ?";
+			$query = $this->db->query($sql, array($id));
+			return $query->result_array();
+		}
+
+		$sql = "SELECT * FROM type_payements BY id DESC";
+		$query = $this->db->query($sql);
+		return $query->result_array();
 	}
 
 	function count_filtered()

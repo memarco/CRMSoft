@@ -117,7 +117,7 @@ function edit_client(id)
             $('[name="email_client"]').val(data.email_client);
             $('[name="tel_client"]').val(data.tel_client);
             $('[name="addresse_client"]').val(data.addresse_client);
-            $('[name="autre_info_client"]').val(data.autre_info_client);;
+            $('[name="autre_info_client"]').val(data.autre_info_client);
             $('#modal_form').modal('show'); // show bootstrap modal when complete loaded
             $('.modal-title').text('Edit Client'); // Set title to Bootstrap modal title
 

@@ -30,7 +30,7 @@ public function __construct()
         $this->db->select('*');
         $this->db->from('payements as p');
         $this->db->join('dossiers as d', 'p.id_dossier = d.id','left');
-        $this->db->join('clients as cl', 'd.id_client = cl.id','left');
+        $this->db->join('clients as cl', 'd.client_id = cl.id','left');
 
       $this->db->where('numero_dossier', $postData['numero_dossier']);
       //$q = $this->db->get('dossiers');
@@ -54,7 +54,7 @@ public function __construct()
           $this->db->select('*');
           $this->db->from('depenses as p');
           $this->db->join('dossiers as d', 'p.id_dossier = d.id','left');
-          $this->db->join('clients as cl', 'd.id_client = cl.id','left');
+          $this->db->join('clients as cl', 'd.client_id = cl.id','left');
 
         $this->db->where('numero_dossier', $postData['numero_dossier']);
         //$q = $this->db->get('dossiers');

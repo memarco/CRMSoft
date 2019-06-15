@@ -8,6 +8,8 @@ class Depense extends CI_Controller {
    parent::__construct();
    //$this->load->model('type_depense_model','type_depense');
    $this->load->model('depense_model','depense');
+   $this->load->model('dossier_model','dossier');
+   
  }
 
  public function index()
@@ -31,34 +33,55 @@ class Depense extends CI_Controller {
 
  public function ajax_list()
  {
-   $list = $this->depense->get_datatables();
-   $data = array();
-   $no = $_POST['start'];
-   foreach ($list as $depense) {
-     $no++;
-     $row = array();
-     //$row[] = $depense->libelle_type_depense;
-     $row[] = $depense->numero_dossier;
-//     $row[] = $depense->num_depense;
-     //$row[] = $depense->libelle_depense;
-     $row[] = $depense->montant_depense;
-     $row[] = $depense->date_depense;
-     $row[] = $depense->commentaire_depense;
+     
+      $output = array('data' => array());
+   $data = $this->depense->getdepensedatatables();
+   
+   foreach ($data as $key => $value) {
+    $dossier_data = $this->dossier->getdossierdatatables($value['id_dossier']);
+    
+    
+    $output['data'][$key] = array(
+				
+				//$value['id'],
+                                $dossier_data[0]['numero_dossier'],
+                                $value['montant_depense'],
+                                $value['date_depense'],
+                                $value['commentaire_depense'],
+                         
+    '<a href="javascript:void(0);" class="btn btn-info btn-sm editRecord"   title="Edit" onclick="edit_depense('."'".$value['id']."'".')">  Edit</a>
+        <a href="javascript:void(0);" class="btn btn-danger btn-sm deleteRecord"   title="Hapus" onclick="delete_depense('."'".$value['id']."'".')">  Delete</a>'
+			);
 
-     //add html for action
-     $row[] = '<a href="javascript:void(0);" class="btn btn-info btn-sm editRecord"   title="Edit" onclick="edit_depense('."'".$depense->id."'".')">  Edit</a>
-        <a href="javascript:void(0);" class="btn btn-danger btn-sm deleteRecord"   title="Hapus" onclick="delete_depense('."'".$depense->id."'".')">  Delete</a>';
+//   $list = $this->depense->get_datatables();
+//   $data = array();
+//   $no = $_POST['start'];
+//   foreach ($list as $depense) {
+//     $no++;
+//     $row = array();
+//     //$row[] = $depense->libelle_type_depense;
+//     $row[] = $depense->numero_dossier;
+////     $row[] = $depense->num_depense;
+//     //$row[] = $depense->libelle_depense;
+//     $row[] = $depense->montant_depense;
+//     $row[] = $depense->date_depense;
+//     $row[] = $depense->commentaire_depense;
+//
+//     //add html for action
+//     $row[] = '<a href="javascript:void(0);" class="btn btn-info btn-sm editRecord"   title="Edit" onclick="edit_depense('."'".$depense->id."'".')">  Edit</a>
+//        <a href="javascript:void(0);" class="btn btn-danger btn-sm deleteRecord"   title="Hapus" onclick="delete_depense('."'".$depense->id."'".')">  Delete</a>';
+//
+//
+//     $data[] = $row;
+//   }
 
-
-     $data[] = $row;
-   }
-
-   $output = array(
-           "draw" => $_POST['draw'],
-           "recordsTotal" => $this->depense->count_all(),
-           "recordsFiltered" => $this->depense->count_filtered(),
-           "data" => $data,
-       );
+//   $output = array(
+//           "draw" => $_POST['draw'],
+//           "recordsTotal" => $this->depense->count_all(),
+//           "recordsFiltered" => $this->depense->count_filtered(),
+//           "data" => $data,
+//       );
+     }
    //output to json format
    echo json_encode($output);
  }

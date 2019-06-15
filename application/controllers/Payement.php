@@ -6,8 +6,10 @@ class Payement extends CI_Controller {
  public function __construct()
  {
    parent::__construct();
-   $this->load->model('dossier_model','dossier');
    $this->load->model('payement_model','payement');
+   $this->load->model('dossier_model','dossier');
+   $this->load->model('type_payement_model','type_payement');
+   
  }
 
  public function index()
@@ -25,34 +27,48 @@ class Payement extends CI_Controller {
 
  public function ajax_list()
  {
-   $list = $this->payement->get_datatables();
-   $data = array();
-   $no = $_POST['start'];
-   foreach ($list as $payement) {
-
-     $no++;
-     $row = array();
-     $row[] = $payement->numero_dossier;
-     $row[] = $payement->type_payement_libelle;
-     //$row[] = $payement->libelle_payement;
-     $row[] = $payement->montant_payement;
-     $row[] = $payement->date_payement;
-     $row[] = $payement->commentaire_payement;
-
-     //add html for action
-     $row[] = '<a href="javascript:void(0);" class="btn btn-info btn-sm editRecord"   title="Edit" onclick="edit_payement('."'".$payement->id."'".')">  Edit</a>
-        <a href="javascript:void(0);" class="btn btn-danger btn-sm deleteRecord"   title="Hapus" onclick="delete_payement('."'".$payement->id."'".')">  Delete</a>';
-
-
-     $data[] = $row;
+     $output = array('data' => array());
+   $data = $this->payement->getpayementdatatables();
+   
+   foreach ($data as $key => $value) {
+    $type_payement_data = $this->type_payement->gettype_payementdatatables($value['id_type_payement']);
+    $dossier_data = $this->dossier->getdossierdatatables($value['id_dossier']);
+    
+    
+    $output['data'][$key] = array(
+				
+				//$value['id'],
+                                $dossier_data[0]['numero_dossier'],
+                                $type_payement_data[0]['type_payement_libelle'],
+			        $value['montant_payement'],
+                                $value['date_payement'],
+                                $value['commentaire_payement'],
+                         
+    '<a href="javascript:void(0);" class="btn btn-info btn-sm editRecord"   title="Edit" onclick="edit_payement('."'".$value['id']."'".')">  Edit</a>
+        <a href="javascript:void(0);" class="btn btn-danger btn-sm deleteRecord"   title="Hapus" onclick="delete_payement('."'".$value['id']."'".')">  Delete</a>'
+			);
+//   $list = $this->payement->get_datatables();
+//   $data = array();
+//   $no = $_POST['start'];
+//   foreach ($list as $payement) {
+//
+//     $no++;
+//     $row = array();
+//     $row[] = $payement->numero_dossier;
+//     $row[] = $payement->type_payement_libelle;
+//     //$row[] = $payement->libelle_payement;
+//     $row[] = $payement->montant_payement;
+//     $row[] = $payement->date_payement;
+//     $row[] = $payement->commentaire_payement;
+//
+//     //add html for action
+//     $row[] = '<a href="javascript:void(0);" class="btn btn-info btn-sm editRecord"   title="Edit" onclick="edit_payement('."'".$payement->id."'".')">  Edit</a>
+//        <a href="javascript:void(0);" class="btn btn-danger btn-sm deleteRecord"   title="Hapus" onclick="delete_payement('."'".$payement->id."'".')">  Delete</a>';
+//
+//
+//     $data[] = $row;
    }
 
-   $output = array(
-           "draw" => $_POST['draw'],
-           "recordsTotal" => $this->payement->count_all(),
-           "recordsFiltered" => $this->payement->count_filtered(),
-           "data" => $data,
-       );
    //output to json format
    echo json_encode($output);
  }
