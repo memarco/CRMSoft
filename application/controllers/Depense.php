@@ -19,16 +19,16 @@ class Depense extends CI_Controller {
  }
 
 
- public function get_data()
-  {
-      echo json_encode($this->depense->get_all());
-  }
-
- public function open()
- {
-   $this->load->helper('url');
-   $this->load->view('depense/new');
- }
+// public function get_data()
+//  {
+//      echo json_encode($this->depense->get_all());
+//  }
+//
+// public function open()
+// {
+//   $this->load->helper('url');
+//   $this->load->view('depense/new');
+// }
 
 
  public function ajax_list()

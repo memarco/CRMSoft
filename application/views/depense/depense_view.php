@@ -192,30 +192,30 @@ function delete_depense(id)
 
     }
 }
-function bind_type_depense()
-{
-    //Ajax Load data from ajax
-    $.ajax({
-        url : "<?php echo site_url('type_depense/get_data')?>",
-        type: "GET",
-        dataType: "JSON",
-        success: function(data)
-        {
-          var items = "";
-           items += "<option value='' disabled selected>- Choisir -</option>";
-           $.each(data, function (i, item) {
-                 items += "<option value='" + item.id + "'>" + (item.libelle_type_depense) + "</option>";
-           });
-           $("#s_type_depense").html(items);
-
-
-        },
-        error: function (jqXHR, textStatus, errorThrown)
-        {
-            alert('Error get data from ajax');
-        }
-    });
-}
+//function bind_type_depense()
+//{
+//    //Ajax Load data from ajax
+//    $.ajax({
+//        url : "<-?php echo site_url('type_depense/get_data')?>",
+//        type: "GET",
+//        dataType: "JSON",
+//        success: function(data)
+//        {
+//          var items = "";
+//           items += "<option value='' disabled selected>- Choisir -</option>";
+//           $.each(data, function (i, item) {
+//                 items += "<option value='" + item.id + "'>" + (item.libelle_type_depense) + "</option>";
+//           });
+//           $("#s_type_depense").html(items);
+//
+//
+//        },
+//        error: function (jqXHR, textStatus, errorThrown)
+//        {
+//            alert('Error get data from ajax');
+//        }
+//    });
+//}
 
 function bind_dossier()
 {
@@ -268,7 +268,7 @@ function bind_dossier()
 //    });
 //}
 $(document).ready(function() {
- bind_type_depense();
+ //bind_type_depense();
  bind_dossier();
 });
 
