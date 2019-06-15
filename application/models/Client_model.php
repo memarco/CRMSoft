@@ -73,7 +73,7 @@ class Client_model extends CI_Model {
 			return $query->result_array();
 		}
 
-		$sql = "SELECT * FROM clients BY id DESC";
+		$sql = "SELECT * FROM clients ORDER BY id DESC";
 		$query = $this->db->query($sql);
 		return $query->result_array();
             
